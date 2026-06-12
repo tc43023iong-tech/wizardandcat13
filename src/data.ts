@@ -468,6 +468,7 @@ export const USEFUL_SENTENCES = [
     id: 1,
     sentence: "What's going on?",
     zh: "發生了什麼事？ / 怎麼了？",
+    image: "/assets/images/quiz_img_1_1781279086209.jpg",
     context: "Ask this when you see something happening (事情發生) and feel curious (好奇的).",
     examples: [
       "If you see a lot of friends whispering (低語) and laughing together: \"What's going on?\"",
@@ -478,6 +479,7 @@ export const USEFUL_SENTENCES = [
     id: 2,
     sentence: "Come with me!",
     zh: "跟我來！ / 跟我一起走！",
+    image: "/assets/images/quiz_img_3_1781279129066.jpg",
     context: "Say this when you want someone to follow (跟隨) you.",
     examples: [
       "If you want your friends to go play on the school playground (遊戲場): \"Come with me!\"",
@@ -488,6 +490,7 @@ export const USEFUL_SENTENCES = [
     id: 3,
     sentence: "I need your help.",
     zh: "我需要你的幫忙。",
+    image: "/assets/images/quiz_img_2_1781279110797.jpg",
     context: "Say this when you cannot do something alone (獨自) and want some assistance (協助).",
     examples: [
       "If you meet a very difficult (困難的) homework question in class: \"I need your help.\"",
@@ -501,37 +504,37 @@ export const USEFUL_SENTENCES_QUIZ: QuizQuestion[] = [
     question: "You see a big group of animal friends laughing and talking in the school hallway. You want to walk over and ask what is happening. You say:",
     options: ["I need your help.", "What's going on?", "Come with me!"],
     answer: "What's going on?",
-    image: "/src/assets/images/quiz_img_1_1781279086209.jpg"
+    image: "/assets/images/quiz_img_1_1781279086209.jpg"
   },
   {
     question: "You are sitting at your little desk and cannot solve a very difficult math question on your worksheet. You want to ask for assistance. You say:",
     options: ["What's going on?", "Come with me?", "I need your help."],
     answer: "I need your help.",
-    image: "/src/assets/images/quiz_img_2_1781279110797.jpg"
+    image: "/assets/images/quiz_img_2_1781279110797.jpg"
   },
   {
     question: "You just found a beautiful glowing butterfly in the garden! You want your best friend to follow you to see it. You say:",
     options: ["Come with me!", "I need your help.", "What's going on?"],
     answer: "Come with me!",
-    image: "/src/assets/images/quiz_img_3_1781279129066.jpg"
+    image: "/assets/images/quiz_img_3_1781279129066.jpg"
   },
   {
     question: "Your schoolbag is too heavy and you cannot carry it by yourself. You want your teacher or friend to assist you. You say:",
     options: ["Come with me!", "I need your help.", "What's going on?"],
     answer: "I need your help.",
-    image: "/src/assets/images/quiz_img_4_1781279146552.jpg"
+    image: "/assets/images/quiz_img_4_1781279146552.jpg"
   },
   {
     question: "You walk into your empty classroom and see colorful balloons, streamers, and a giant birthday cake on the desk, but nobody is there. You ask:",
     options: ["I need your help.", "What's going on?", "Come with me!"],
     answer: "What's going on?",
-    image: "/src/assets/images/quiz_img_5_1781279165511.jpg"
+    image: "/assets/images/quiz_img_5_1781279165511.jpg"
   },
   {
     question: "You have a super cool new red toy car and you want your puppy classmate to come over and play with you. You tell them:",
     options: ["What's going on?", "I need your help.", "Come with me!"],
     answer: "Come with me!",
-    image: "/src/assets/images/quiz_img_6_1781279180777.jpg"
+    image: "/assets/images/quiz_img_6_1781279180777.jpg"
   }
 ];
 

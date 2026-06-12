@@ -23,28 +23,28 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_ballroom",
     order: 1,
-    image: "/src/assets/images/seq_ballroom_1781280139847.jpg",
+    image: "/assets/images/seq_ballroom_1781280139847.jpg",
     narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
     hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
   },
   {
     id: "seq_dirk",
     order: 2,
-    image: "/src/assets/images/seq_dirk_1781280167527.jpg",
+    image: "/assets/images/seq_dirk_1781280167527.jpg",
     narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
     hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
   },
   {
     id: "seq_queen",
     order: 3,
-    image: "/src/assets/images/seq_queen_1781280182107.jpg",
+    image: "/assets/images/seq_queen_1781280182107.jpg",
     narrative: "The queen sneezed 'Ah-choo!' and told Tom about a special gift.",
     hint: "女王哈啾：女王感冒打了好大的噴嚏，告訴湯姆她需要生日禮物幫忙。"
   },
   {
     id: "seq_pocket",
     order: 4,
-    image: "/src/assets/images/seq_pocket_1781280153755.jpg",
+    image: "/assets/images/seq_pocket_1781280153755.jpg",
     narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
     hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
   }
@@ -313,9 +313,6 @@ export default function WordReview() {
             <h3 className="text-xl font-black text-[#5c3e16] flex items-center gap-2">
               <span className="text-2xl">🧩</span> 故事繪本排序大關卡 Story Sequencing
             </h3>
-            <p className="text-xs text-amber-900/80 font-semibold mt-1">
-              小三的小朋友們！請看一看下面 4 塊來自課文的插圖，依照時間先後，用按鈕排列出 1 ⟶ 2 ⟶ 3 ⟶ 4 順序喔！
-            </p>
           </div>
           <button
             onClick={handleShuffleSeq}
@@ -360,7 +357,7 @@ export default function WordReview() {
                 {/* Step Selection Controls */}
                 <div className="space-y-2 pt-2 border-t border-amber-100/30">
                   <span className="text-[10px] font-black text-amber-800/80 block text-center uppercase tracking-wider">
-                    排在第幾步？ (Select Step)
+                    Select Step
                   </span>
                   <div className="grid grid-cols-4 gap-1.5">
                     {[1, 2, 3, 4].map((stepNum) => {

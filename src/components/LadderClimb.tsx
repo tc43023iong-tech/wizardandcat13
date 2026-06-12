@@ -120,11 +120,6 @@ export default function LadderClimb() {
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
             仙境城堡爬爬梯對決 (中選英挑戰)
           </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed">
-            這是一款可以和好朋友在<b>同一個螢幕/大黑板</b>上進行的多人同步攀爬賽！
-            螢幕會根據人數切分成 2人、3人 或 4人 答題區！題目出現中文意思，請選出正確的英文單詞，
-            答對一題，角色就會往右爬一格，先到達頂端 👑 城堡的人就獲勝！即使有人先抵達，遊戲也不會中斷，大家可以繼續完成自己的天梯喔！
-          </p>
         </div>
       </div>
 

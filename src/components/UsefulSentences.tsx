@@ -111,6 +111,20 @@ export default function UsefulSentences() {
                 </button>
               </div>
 
+              {/* Illustration Frame */}
+              {item.image && (
+                <div className="mb-4 aspect-video overflow-hidden rounded-2xl border-2 border-amber-100 bg-amber-50 shadow-xs relative">
+                  <img
+                    src={item.image}
+                    alt={item.sentence}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 pointer-events-none"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Subtle decorative bottom gradient */}
+                  <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                </div>
+              )}
+
               {/* Big bold quote */}
               <h3 className="text-xl md:text-2xl font-black text-[#2b2723] leading-snug tracking-tight">
                 🗣️ &quot;{item.sentence}&quot;

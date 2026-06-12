@@ -170,9 +170,6 @@ export default function StorySection() {
           📖
         </div>
         <div className="flex-1">
-          <span className="px-3 py-1 text-xs font-bold bg-amber-200 text-amber-950 rounded-full">
-            小三可愛伴讀 Story Reading
-          </span>
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
             Wizard and Cat 13: Prince Eric&#39;s Birthday
           </h2>
@@ -210,11 +207,8 @@ export default function StorySection() {
             <span className="text-2xl">🔮</span>
             <div>
               <h3 className="font-extrabold text-lg tracking-wide">
-                奇幻故事朗讀冒險 Story Mode
+                Story Mode
               </h3>
-              <p className="text-xs text-amber-900/80 font-semibold mt-0.5">
-                一句一句分行排版，方便小朋友手指點讀對照單詞！
-              </p>
             </div>
           </div>
         </div>
