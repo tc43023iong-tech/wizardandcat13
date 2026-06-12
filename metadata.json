@@ -1,0 +1,6 @@
+{
+  "name": "Wizard and Cat - Prince Eric's Birthday Story & Games",
+  "description": "An interactive English learning suite for Grade 3 students, featuring story reading, orange clickable vocabulary with IPA and example sentences, a word matching game, and a collaborative multiplayer ladder-climb racer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
