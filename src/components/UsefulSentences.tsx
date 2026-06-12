@@ -169,9 +169,6 @@ export default function UsefulSentences() {
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-2 left-2 bg-amber-900/80 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full select-none shadow-sm font-sans tracking-wide">
-                  🎨 Japanese Picture Book Illustration
-                </div>
               </div>
             </div>
           )}

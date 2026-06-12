@@ -380,9 +380,6 @@ export default function Worksheet() {
                     />
                   ))}
                 </div>
-                <p className="text-[10px] text-slate-400 font-bold">
-                  ({correctNum} / 5 correct answers)
-                </p>
               </div>
 
               {/* Assessment message (purely star value based, no points) */}

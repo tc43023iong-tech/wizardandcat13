@@ -116,14 +116,14 @@ export default function ShadowReading() {
                       Tom (好奇發問) <Smile className="w-3.5 h-3.5" />
                     </span>
                     <p className="text-xl font-black text-white tracking-wide">
-                      &quot;What&#39;s going on?&quot;
+                      &quot;What&apos;s going on?&quot; Tom asked.
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
                       💡 影子朗讀提示：語氣要上揚，表示出非常好奇、想要探查究竟的感覺！
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("What's going on?")}
+                    onClick={() => playTTS("What's going on? Tom asked.")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >
@@ -139,14 +139,14 @@ export default function ShadowReading() {
                       Cat (好意分享秘密)
                     </span>
                     <p className="text-xl font-black text-white tracking-wide">
-                      &quot;There&#39;s a birthday party tomorrow.&quot;
+                      &quot;There&apos;s a birthday party tomorrow,&quot; Cat said.
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
-                      💡 影子朗讀提示：像在跟同伴說悄悄話，放輕音量、一字字驚喜地分享！
+                      💡 影子朗讀提示：像在跟同伴說悄悄話，一字字驚喜而溫柔地說！
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("There's a birthday party tomorrow.")}
+                    onClick={() => playTTS("There's a birthday party tomorrow, Cat said.")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >
@@ -162,14 +162,14 @@ export default function ShadowReading() {
                       Dirk (粗魯地命令人)
                     </span>
                     <p className="text-xl font-black text-white tracking-wide">
-                      &quot;Come with me!&quot;
+                      &quot;Come with me!&quot; Dirk said.
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
-                      💡 影子朗讀提示：聲音可以粗狂生氣一點，乾脆、有力、大聲命令！
+                      💡 影子朗讀提示：聲音可以粗重有力，乾脆、直接命令！
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("Come with me!")}
+                    onClick={() => playTTS("Come with me! Dirk said.")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >
@@ -183,27 +183,27 @@ export default function ShadowReading() {
           <div className="space-y-6">
             <div className="p-4 bg-[#1c1a17]/50 rounded-2.5xl border border-amber-500/10">
               <span className="text-xs font-bold text-amber-300 uppercase tracking-widest block mb-4">
-                🤧 STAGE SOUNDS & DRAMATIC VOICES:
+                👑 THE QUEEN & TOM CHRONICLES:
               </span>
 
               {/* Action Cards Stack */}
               <div className="space-y-4">
                 {/* 1. Queen Sneezing */}
                 <div className="flex items-start gap-4 bg-[#13110f]/60 p-4 rounded-2xl border border-white/5 relative hover:border-amber-300/20 transition-all">
-                  <span className="text-2xl shrink-0">👑</span>
+                  <span className="text-2xl shrink-0">🤧</span>
                   <div className="flex-1 space-y-1">
                     <span className="text-xs font-bold text-[#ebbe68]">
-                      The Queen (哈啾大喷嚏)
+                      The Queen (大哈啾與噴嚏)
                     </span>
                     <p className="text-xl font-black text-white tracking-wide font-mono">
-                      &quot;Ah-choo!&quot;
+                      &quot;Ah-choo!&quot; The queen sneezed.
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
-                      💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，全班都愛演！🤧
+                      💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，神氣活現！🤧
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("Ah-choo!")}
+                    onClick={() => playTTS("Ah-choo! The queen sneezed.")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >
@@ -211,22 +211,22 @@ export default function ShadowReading() {
                   </button>
                 </div>
 
-                {/* 2. Tom Surprised */}
+                {/* 2. Queen Help request */}
                 <div className="flex items-start gap-4 bg-[#13110f]/60 p-4 rounded-2xl border border-white/5 relative hover:border-amber-300/20 transition-all">
-                  <span className="text-2xl shrink-0">🤵</span>
+                  <span className="text-2xl shrink-0 font-sans">👑</span>
                   <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-sky-305">
-                      Tom (不可置信、嚇一大跳)
+                    <span className="text-xs font-bold text-teal-300">
+                      The Queen (誠懇地尋求拯救)
                     </span>
                     <p className="text-xl font-black text-white tracking-wide">
-                      &quot;A dog?&quot;
+                      &quot;Tom, I need your help,&quot; she said.
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
-                      💡 影子朗讀提示：重複說這句時，尾部拔高，做出滿臉問號驚呆表情！🤷‍♂️
+                      💡 影子朗讀提示：語氣要誠懇和重讀 need your help！
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("A dog?")}
+                    onClick={() => playTTS("Tom, I need your help, she said.")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >
@@ -234,22 +234,22 @@ export default function ShadowReading() {
                   </button>
                 </div>
 
-                {/* 3. Cat Anger */}
+                {/* 3. Tom Shocked and Cat Anger combined */}
                 <div className="flex items-start gap-4 bg-[#13110f]/60 p-4 rounded-2xl border border-white/5 relative hover:border-amber-300/20 transition-all">
                   <span className="text-2xl shrink-0">😾</span>
                   <div className="flex-1 space-y-1">
                     <span className="text-xs font-bold text-rose-350">
-                      Cat (狂怒警告嘶喊)
+                      Tom &amp; Cat (驚叫與貓咪狂怒嘶喊)
                     </span>
-                    <p className="text-xl font-black text-rose-400 tracking-widest font-mono animate-pulse">
-                      &quot;Hiss!&quot;
+                    <p className="text-xl font-black text-white tracking-wide">
+                      &quot;A dog?&quot; Tom repeated. Hiss!
                     </p>
                     <p className="text-xs text-amber-100/60 font-medium">
-                      💡 影子朗讀提示：牙齒咬合發出貓咪抓狂的「嘶——」警告！生動有趣！
+                      💡 影子朗讀提示：先拔高問句 A dog?，接著用力發出生氣貓咪抓狂的 Hiss！
                     </p>
                   </div>
                   <button
-                    onClick={() => playTTS("Hiss!")}
+                    onClick={() => playTTS("A dog? Tom repeated. Hiss!")}
                     className="p-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-colors cursor-pointer self-center border border-amber-500/20"
                     title="聽到發音"
                   >

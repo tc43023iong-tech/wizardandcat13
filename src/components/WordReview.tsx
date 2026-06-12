@@ -19,10 +19,97 @@ interface CardItem {
   isMatched: boolean;
 }
 
+const SEQUENCING_CARDS = [
+  {
+    id: "seq_ballroom",
+    order: 1,
+    image: "/src/assets/images/seq_ballroom_1781280139847.jpg",
+    narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
+    hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
+  },
+  {
+    id: "seq_dirk",
+    order: 2,
+    image: "/src/assets/images/seq_dirk_1781280167527.jpg",
+    narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
+    hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
+  },
+  {
+    id: "seq_queen",
+    order: 3,
+    image: "/src/assets/images/seq_queen_1781280182107.jpg",
+    narrative: "The queen sneezed 'Ah-choo!' and told Tom about a special gift.",
+    hint: "女王哈啾：女王感冒打了好大的噴嚏，告訴湯姆她需要生日禮物幫忙。"
+  },
+  {
+    id: "seq_pocket",
+    order: 4,
+    image: "/src/assets/images/seq_pocket_1781280153755.jpg",
+    narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
+    hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
+  }
+];
+
 export default function WordReview() {
   const [selectedWord, setSelectedWord] = useState<WordDetail | null>(null);
   const [gameMode, setGameMode] = useState<'single' | 'duel'>('single');
   const [activeTab, setActiveTab ] = useState<'list' | 'match'>('list');
+
+  // Sequencing Challenge states
+  const [seqCards, setSeqCards] = useState(() => {
+    return [...SEQUENCING_CARDS].sort(() => 0.5 - Math.random());
+  });
+  const [seqAssignments, setSeqAssignments] = useState<Record<string, number | null>>({
+    seq_ballroom: null,
+    seq_dirk: null,
+    seq_queen: null,
+    seq_pocket: null
+  });
+  const [seqStatus, setSeqStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
+
+  const handleShuffleSeq = () => {
+    setSeqCards([...SEQUENCING_CARDS].sort(() => 0.5 - Math.random()));
+    setSeqAssignments({
+      seq_ballroom: null,
+      seq_dirk: null,
+      seq_queen: null,
+      seq_pocket: null
+    });
+    setSeqStatus('idle');
+    playCorrectSound();
+  };
+
+  const handleAssignStep = (cardId: string, stepNum: number) => {
+    setSeqAssignments(prev => {
+      const updated = { ...prev };
+      // If another card already has this step, clear it first to avoid duplicates
+      for (const [cid, sNum] of Object.entries(updated)) {
+        if (sNum === stepNum) {
+          updated[cid] = null;
+        }
+      }
+      updated[cardId] = stepNum;
+      return updated;
+    });
+    setSeqStatus('idle');
+  };
+
+  const handleCheckSeqOrder = () => {
+    // Check if the assignments are correct: Ballroom=1, Dirk=2, Queen=3, Pocket=4
+    const isCorrect = 
+      seqAssignments.seq_ballroom === 1 &&
+      seqAssignments.seq_dirk === 2 &&
+      seqAssignments.seq_queen === 3 &&
+      seqAssignments.seq_pocket === 4;
+
+    if (isCorrect) {
+      setSeqStatus('correct');
+      playLevelUpSound();
+    } else {
+      setSeqStatus('incorrect');
+      playIncorrectSound();
+    }
+  };
 
   // Duel player states
   const [p1Cards, setP1Cards] = useState<CardItem[]>([]);
@@ -202,7 +289,7 @@ export default function WordReview() {
     <div className="space-y-12">
       {/* Intro header */}
       <div className="p-6 md:p-8 rounded-3xl bg-[#f5efe2]/70 border border-amber-100 flex flex-col md:flex-row items-center gap-6 animate-fade-in">
-        <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm">
+        <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm animate-pulse">
           💡
         </div>
         <div>
@@ -213,10 +300,166 @@ export default function WordReview() {
             重要課後單詞複習 & 雙人消消樂機台
           </h2>
           <p className="text-[#4a453e] text-sm mt-1 leading-relaxed">
-            在這裡，我們精心準備了故事核心的 18 個英文單詞！
-            可以先挑選「單詞預習」熟悉發音與意思，接著點擊「消消樂對決」進行可愛刺激的淘汰賽！
+            在這裡，我們精心準備了故事核心的英文單詞與超級有趣的繪本排序挑戰！
+            請先和同桌同學一起完成「故事圖片排序大關卡」，接著熟悉「單詞預習」與進入對戰淘汰賽！
           </p>
         </div>
+      </div>
+
+      {/* 🧩 故事排序大關卡 Story Sequencing Challenge */}
+      <div className="bg-white rounded-3xl border-4 border-amber-200 p-6 md:p-8 shadow-xl space-y-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-amber-100 pb-4">
+          <div>
+            <h3 className="text-xl font-black text-[#5c3e16] flex items-center gap-2">
+              <span className="text-2xl">🧩</span> 故事繪本排序大關卡 Story Sequencing
+            </h3>
+            <p className="text-xs text-amber-900/80 font-semibold mt-1">
+              小三的小朋友們！請看一看下面 4 塊來自課文的插圖，依照時間先後，用按鈕排列出 1 ⟶ 2 ⟶ 3 ⟶ 4 順序喔！
+            </p>
+          </div>
+          <button
+            onClick={handleShuffleSeq}
+            className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all cursor-pointer"
+          >
+            <span>🔄 隨機亂序 Shuffle</span>
+          </button>
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {seqCards.map((card) => {
+            const currentStep = seqAssignments[card.id];
+
+            return (
+              <div
+                key={card.id}
+                className="bg-[#FCFCF9] border-2 border-amber-150/60 rounded-2.5xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4 relative overflow-hidden"
+              >
+                {/* Active step indicator badge */}
+                {currentStep !== null && (
+                  <div className="absolute top-2 right-2 bg-[#e07a5f] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md animate-bounce">
+                    {currentStep}
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {/* Aspect ratio frame for image */}
+                  <div className="aspect-video sm:aspect-square overflow-hidden rounded-2xl bg-slate-50 border border-slate-250/20">
+                    <img
+                      src={card.image}
+                      alt="Story scene picture"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <p className="text-xs font-bold text-slate-755 leading-relaxed bg-white p-2.5 rounded-xl border border-dashed border-slate-200 min-h-[64px]">
+                    {card.narrative}
+                  </p>
+                </div>
+
+                {/* Step Selection Controls */}
+                <div className="space-y-2 pt-2 border-t border-amber-100/30">
+                  <span className="text-[10px] font-black text-amber-800/80 block text-center uppercase tracking-wider">
+                    排在第幾步？ (Select Step)
+                  </span>
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {[1, 2, 3, 4].map((stepNum) => {
+                      const isSelected = currentStep === stepNum;
+                      return (
+                        <button
+                          key={stepNum}
+                          onClick={() => handleAssignStep(card.id, stepNum)}
+                          className={`py-2 text-xs font-black rounded-lg border-2 transition-all cursor-pointer ${
+                            isSelected
+                              ? 'bg-[#e07a5f] border-[#ca6347] text-white shadow-sm scale-110'
+                              : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
+                          }`}
+                        >
+                          {stepNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Feedback Alert Panels */}
+        <AnimatePresence mode="wait">
+          {seqStatus === 'correct' && (
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="p-5 rounded-2.5xl bg-emerald-50 border-2 border-emerald-300 text-emerald-950 flex flex-col sm:flex-row items-center gap-4 shadow-sm"
+            >
+              <span className="text-4xl animate-bounce">🎉🎓😻</span>
+              <div className="flex-1 text-center sm:text-left">
+                <h4 className="font-black text-[#2b4c3f] text-base">排序大功告成！ 完美過關！</h4>
+                <p className="text-xs text-slate-600 font-semibold mt-0.5">
+                  太厲害了！你把「僕人舞廳佈置 ⟶ 德克叫人 ⟶ 覲見女王打噴嚏 ⟶ 聽到寵物小狗貓咪哈氣抓手」的生日故事邏輯理得清清楚楚！
+                </p>
+              </div>
+              <button
+                onClick={handleShuffleSeq}
+                className="px-4 py-2 bg-[#81b29a] hover:bg-[#6c9b83] text-white text-xs font-bold rounded-xl whitespace-nowrap cursor-pointer shadow-xs active:scale-95 transition-all"
+              >
+                打亂再玩一次 Play Again 🔄
+              </button>
+            </motion.div>
+          )}
+
+          {seqStatus === 'incorrect' && (
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="p-5 rounded-2.5xl bg-rose-50 border-2 border-rose-300 text-rose-950 space-y-3 shadow-sm"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">⚡😾</span>
+                <div className="flex-1">
+                  <h4 className="font-extrabold text-[#7c2d12] text-sm md:text-base">順序不太對喔，再看一眼情節喔！</h4>
+                  <p className="text-xs text-slate-600 font-semibold mt-0.5">
+                    這 4 張圖片跟情節發展不一致。點擊下方黃色「顯示閱讀小線索」聽聽提示吧！
+                  </p>
+                </div>
+              </div>
+
+              {/* Collapsed Reading Hint */}
+              <div className="bg-[#fcf7f6] p-4 rounded-xl border border-rose-150 text-xs font-bold text-slate-600 space-y-1.5">
+                <span className="text-amber-800 uppercase block mb-0.5">💡 故事閱讀小線索 (Story Clue)：</span>
+                <p>
+                  1. 湯姆先是在皇家宴會廳裡，好奇看著僕人們擺放鮮花和彩帶準備明天 Eric 王子的生日會。
+                </p>
+                <p>
+                  2. 突然德克跳出來，兇巴巴地叫湯姆立刻前去覲見大廳，說女王陛下想馬上見他。
+                </p>
+                <p>
+                  3. 湯姆進到王座廳，女王感冒打了好大的噴嚏，擤完鼻子告訴湯姆她需要一個特別的生日禮物。
+                </p>
+                <p>
+                  4. 高貴的女王說她想弄一隻小狗寵物，口袋底下的貓咪聽了發出生氣的嘶叫，用爪子抓湯姆。
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Action checks Row */}
+        {seqStatus !== 'correct' && (
+          <div className="flex justify-center pt-2">
+            <button
+              onClick={handleCheckSeqOrder}
+              disabled={Object.values(seqAssignments).some((v) => v === null)}
+              className="px-10 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 to-[#e9be88] disabled:from-slate-100 disabled:to-slate-200 text-[#2b2723] disabled:text-slate-400 font-black text-sm hover:scale-103 active:scale-97 transition-all flex items-center gap-2 cursor-pointer shadow-md disabled:cursor-not-allowed"
+            >
+              <span>🔍 檢查排列順序 Check My Order</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Mode selectors */}

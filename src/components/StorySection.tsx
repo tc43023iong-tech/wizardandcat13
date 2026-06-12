@@ -318,11 +318,6 @@ export default function StorySection() {
                               <p className="text-slate-900 text-base md:text-lg font-black tracking-wide">
                                 {questionObj.question}
                               </p>
-                              {questionObj.zh_translation && (
-                                <p className="text-xs text-[#5c3e16] font-bold mt-1">
-                                  💭問題中文：{questionObj.zh_translation}
-                                </p>
-                              )}
                             </div>
 
                             {/* Option buttons */}
