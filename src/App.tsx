@@ -12,30 +12,30 @@ import {
   HelpCircle, 
   Flame, 
   CheckSquare, 
-  MessageSquare, 
+  Mic,
   Gift
 } from 'lucide-react';
 
 // Subcomponents
 import StorySection from './components/StorySection';
 import WordReview from './components/WordReview';
-import FoxQuiz from './components/FoxQuiz';
+import ShadowReading from './components/ShadowReading';
 import UsefulSentences from './components/UsefulSentences';
 import LadderClimb from './components/LadderClimb';
 import Worksheet from './components/Worksheet';
 
-type ActiveTab = 'story' | 'review' | 'quiz' | 'sentences' | 'ladder' | 'worksheet';
+type ActiveTab = 'story' | 'review' | 'shadow' | 'sentences' | 'ladder' | 'worksheet';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('story');
 
   const tabsConfig = [
-    { id: 'story', label: '📖 故事朗讀', subtitle: '故事與影子模仿', color: 'bg-[#e07a5f] text-white border-[#f4f1de]' },
+    { id: 'story', label: '📖 故事朗讀', subtitle: '故事與單詞點讀', color: 'bg-[#e07a5f] text-white border-[#f4f1de]' },
     { id: 'review', label: '📚 單詞複習', subtitle: '字詞卡與雙人配對', color: 'bg-[#f2cc8f] text-[#4a453e] border-[#f4f1de]' },
-    { id: 'quiz', label: '🦊 Fox 問答', subtitle: '小狐狸 5 題精選答', color: 'bg-[#81b29a] text-white border-[#9ecaba]' },
-    { id: 'sentences', label: '🗣️ 實用佳句', subtitle: '生活例句與情境聯想', color: 'bg-[#3d405b] text-white border-[#4f5376]' },
-    { id: 'ladder', label: '🧗 爬爬梯大賽', subtitle: '大黑板多重賽道同步', color: 'bg-[#df7a5f] text-white border-[#ca6347]' },
-    { id: 'worksheet', label: '📝 新課堂練習', subtitle: '選擇/是非/申論卷', color: 'bg-[#9a7b56] text-white border-[#846540]' },
+    { id: 'shadow', label: '🎤 影子跟讀', subtitle: '角色扮演模仿特訓', color: 'bg-amber-500 text-white border-amber-300' },
+    { id: 'sentences', label: '🗣️ 實用佳句', subtitle: '生活句型繪本選擇', color: 'bg-[#3d405b] text-white border-[#4f5376]' },
+    { id: 'ladder', label: '🧗 爬爬梯大賽', subtitle: '大黑板多重對戰軌道', color: 'bg-[#df7a5f] text-white border-[#ca6347]' },
+    { id: 'worksheet', label: '📝 新課堂練習', subtitle: '兒童數位學習單', color: 'bg-[#9a7b56] text-white border-[#846540]' },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function App() {
             </div>
             <div>
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <span className="px-3 py-1 bg-amber-400 text-amber-950 font-black text-[11px] rounded-full uppercase tracking-widest shadow-xs">
+                <span className="px-3 py-1 bg-[#e9be88] text-amber-950 font-black text-[11px] rounded-full uppercase tracking-widest shadow-xs">
                   Wizard and Cat 13
                 </span>
                 <span className="text-sm">✨</span>
@@ -68,14 +68,11 @@ export default function App() {
                 <span>Prince Eric's Birthday</span>
                 <span className="text-[#e07a5f]">🎂</span>
               </h1>
-              <p className="text-xs md:text-sm text-slate-500 font-semibold mt-1">
-                華語對照 🔴 三年級可愛專屬英語冒險互動學習中心 🏰✨
-              </p>
             </div>
           </div>
 
           {/* Quick Stats or Magic Energy Badge */}
-          <div className="flex items-center gap-4 bg-[#FCFCF9]/90 backdrop-blur-md p-4 rounded-3xl border border-amber-100 shadow-sm">
+          <div className="flex items-center gap-4 bg-white/90 backdrop-blur-md p-4 rounded-3xl border border-amber-150 shadow-sm">
             <span className="text-3xl animate-pulse">✨</span>
             <div className="text-left">
               <span className="text-[10px] font-black text-amber-700 block tracking-widest uppercase">
@@ -105,7 +102,7 @@ export default function App() {
                 className={`relative flex flex-col justify-between p-4.5 h-28 rounded-3xl border-3 text-left transition-all overflow-hidden ${
                   isActive
                     ? `${tab.color} scale-102 shadow-lg ring-3 ring-amber-50`
-                    : 'bg-[#FCFCF9] border-amber-100/70 hover:border-amber-200 text-[#4a453e] hover:bg-white'
+                    : 'bg-white border-amber-150 text-[#4a453e] hover:bg-[#faf9f4]'
                 } cursor-pointer`}
               >
                 {/* Visual ripple backdrop overlay when active */}
@@ -145,7 +142,7 @@ export default function App() {
             >
               {activeTab === 'story' && <StorySection />}
               {activeTab === 'review' && <WordReview />}
-              {activeTab === 'quiz' && <FoxQuiz />}
+              {activeTab === 'shadow' && <ShadowReading />}
               {activeTab === 'sentences' && <UsefulSentences />}
               {activeTab === 'ladder' && <LadderClimb />}
               {activeTab === 'worksheet' && <Worksheet />}

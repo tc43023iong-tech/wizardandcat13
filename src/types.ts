@@ -20,6 +20,7 @@ export interface QuizQuestion {
   options: string[];
   answer: string;
   hint?: string;
+  image?: string;
 }
 
 export interface LadderQuestion {

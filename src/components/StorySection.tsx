@@ -5,17 +5,27 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, BookOpen, Languages, Sparkles, Mic, HelpCircle, Star } from 'lucide-react';
+import { Languages, HelpCircle, Check, X, Sparkles, Smile, Trophy } from 'lucide-react';
 import { WordDetail } from '../types';
-import { VOCABULARY_DATA, FULL_STORY_PARAGRAPHS } from '../data';
-import { playTTS, playCorrectSound } from './AudioEngine';
+import { VOCABULARY_DATA, FULL_STORY_PARAGRAPHS, LITTLE_FOX_QUESTIONS } from '../data';
+import { playTTS, playCorrectSound, playLevelUpSound } from './AudioEngine';
 import WordPopup from './WordPopup';
+
+// Mapping of questions to paragraphs (0-indexed referring to LITTLE_FOX_QUESTIONS array)
+const PARAGRAPH_QUESTIONS_MAP: Record<number, number[]> = {
+  3: [3],    // After Paragraph 3: Question "Whose birthday party were the servants getting ready for?"
+  4: [0],    // After Paragraph 4: Question "Who wanted to see Tom?"
+  9: [4],    // After Paragraph 9: Question "What does Prince Eric love?"
+  10: [1, 2] // After Paragraph 10: Question "Which is true?" & "What did Tom feel in his pocket?"
+};
 
 export default function StorySection() {
   const [selectedWord, setSelectedWord] = useState<WordDetail | null>(null);
   const [translatedParagraphs, setTranslatedParagraphs] = useState<Record<number, boolean>>({});
-  const [activeShadowTab, setActiveShadowTab] = useState<'dialogue' | 'action'>('dialogue');
-  const [showSpeechCheck, setShowSpeechCheck] = useState<string | null>(null);
+  
+  // Track answered Q&A
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [showAnswerFeedback, setShowAnswerFeedback] = useState<Record<number, boolean>>({});
 
   // Toggle translation of a paragraph
   const toggleTranslation = (id: number) => {
@@ -25,7 +35,7 @@ export default function StorySection() {
     }));
   };
 
-  // Helper to test if a word needs special emotion/action styling
+  // Helper styles for sound effects or dramatic items
   const getSpecialWordStyle = (word: string) => {
     const w = word.toLowerCase().replace(/[^a-zA-Z]/g, '');
     if (w === 'hiss') return "bg-rose-100 text-rose-600 px-1.5 py-0.5 rounded-lg border-2 border-rose-300 font-extrabold rotate-3 inline-block animate-bounce";
@@ -46,15 +56,13 @@ export default function StorySection() {
     return "";
   };
 
-  // Parse paragraphs and inject interactive orange vocabulary and brackets Chinese translation
+  // Parse text and highlight vocabulary words
   const renderInteractiveEnglish = (text: string) => {
-    // Regex splits on curly braces {Royal Ballroom}
     const parts = text.split(/(\{.*?\})/g);
 
     return parts.map((part, index) => {
       if (part.startsWith('{') && part.endsWith('}')) {
         const wordKey = part.slice(1, -1);
-        // Find in our vocabulary database
         const wordDetail = VOCABULARY_DATA.find(
           v => v.word.toLowerCase() === wordKey.toLowerCase()
         );
@@ -68,21 +76,21 @@ export default function StorySection() {
                   setSelectedWord(wordDetail);
                   playTTS(wordDetail.word);
                 }}
-                className="font-bold text-orange-500 hover:text-orange-600 underline decoration-2 decoration-orange-300 hover:decoration-orange-500 cursor-pointer text-base md:text-lg transition-all focus:outline-none"
+                className="font-extrabold text-orange-500 hover:text-[#d36a3e] underline decoration-2 decoration-orange-300 hover:decoration-[#d36a3e] cursor-pointer text-base md:text-lg transition-all focus:outline-none"
               >
                 {wordDetail.word}
               </button>
-              <span className="text-sm font-semibold text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded-md ml-1 inline-block">
+              <span className="text-xs font-bold text-orange-600 bg-orange-100/70 px-1 rounded ml-1 select-none">
                 ({wordDetail.zh}) {wordDetail.emoji}
               </span>
             </span>
           );
         } else {
-          return <span key={index} className="font-semibold text-slate-700">{wordKey}</span>;
+          return <span key={index} className="font-bold text-slate-800">{wordKey}</span>;
         }
       }
 
-      // Check key words in the normal text to see if they need playful emojis or action styles
+      // Check key words for style adjustments
       const words = part.split(/(\s+)/);
       return words.map((w, wIdx) => {
         const style = getSpecialWordStyle(w);
@@ -99,114 +107,162 @@ export default function StorySection() {
     });
   };
 
-  const handleSpeakFullParagraph = (text: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    // Strip curly braces for TTS clean reading
-    const cleanText = text.replace(/\{/g, '').replace(/\}/g, '');
-    playTTS(cleanText);
+  // Smart sentence-by-sentence splitting logic that keeps brackets and quotes matching
+  const splitIntoSentences = (text: string): string[] => {
+    const sentences: string[] = [];
+    let current = "";
+    let inBrace = false;
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      current += char;
+      if (char === '{') inBrace = true;
+      if (char === '}') inBrace = false;
+      if (char === '"' || char === '\"') inQuotes = !inQuotes;
+
+      if (!inBrace && (char === '.' || char === '?' || char === '!')) {
+        const nextChar = text[i + 1];
+        if (!nextChar || nextChar === ' ' || nextChar === '"') {
+          if (nextChar === '"') {
+            current += '"';
+            i++;
+          }
+          sentences.push(current.trim());
+          current = "";
+        }
+      }
+    }
+    if (current.trim()) {
+      sentences.push(current.trim());
+    }
+    return sentences.filter(Boolean);
   };
 
-  const triggerShadowSuccess = (id: string) => {
-    playCorrectSound();
-    setShowSpeechCheck(id);
-    setTimeout(() => {
-      setShowSpeechCheck(null);
-    }, 3000);
+  // Handle choice submission in Q&A
+  const handleSelectOption = (qIdx: number, val: string, correct: string) => {
+    setAnswers(prev => ({ ...prev, [qIdx]: val }));
+    if (val === correct) {
+      playCorrectSound();
+      // If completed all 5 questions, play spectacular level-up cheer
+      const updated = { ...answers, [qIdx]: val };
+      if (Object.keys(updated).length === LITTLE_FOX_QUESTIONS.length) {
+        setTimeout(() => playLevelUpSound(), 550);
+      }
+    }
   };
+
+  // Toggle reveal answer hint
+  const toggleHintRevealed = (qIdx: number) => {
+    setShowAnswerFeedback(prev => ({ ...prev, [qIdx]: !prev[qIdx] }));
+  };
+
+  // Calculate Q&A statistics
+  const answeredCount = Object.keys(answers).length;
+  const totalQuestions = LITTLE_FOX_QUESTIONS.length;
+  const progressPercent = (answeredCount / totalQuestions) * 100;
 
   return (
     <div className="space-y-12">
-      {/* Introduction Card */}
-      <div className="p-6 md:p-8 rounded-3xl bg-[#f5efe2] border border-amber-200/80 flex flex-col md:flex-row items-center gap-6 shadow-sm">
-        <div className="w-16 h-16 rounded-2xl bg-amber-100/80 flex items-center justify-center text-3xl shrink-0 shadow-sm">
+      {/* Introduction Banner */}
+      <div className="p-6 md:p-8 rounded-3xl bg-[#efefea] border border-slate-300/40 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+        <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm animate-bounce">
           📖
         </div>
-        <div>
-          <span className="px-3 py-1 text-xs font-bold bg-amber-200 text-amber-900 rounded-full">
-            小三可愛伴讀 Story Mode
+        <div className="flex-1">
+          <span className="px-3 py-1 text-xs font-bold bg-amber-200 text-amber-950 rounded-full">
+            小三可愛伴讀 Story Reading
           </span>
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
-            Wizard and Cat 13: Prince Eric's Birthday
+            Wizard and Cat 13: Prince Eric&#39;s Birthday
           </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed">
-            親愛的小朋友，一起來讀讀看湯姆和神奇貓咪的冒險故事吧！
-            點擊<span className="text-amber-700 font-bold">橘色單字</span>可以學發音、音標與例句，
-            旁邊還有<span className="text-[#3d405b] font-bold">「繁體中文翻譯」</span>按鈕可以對照偷偷看喔！✨
+          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed font-medium">
+            點擊句子中的<span className="text-orange-500 font-extrabold">橘色標註單字</span>，可以立刻聽發音、看音標與了解其例句。
+            我們已經將故事切分成<b>「一句一行」</b>，並伴隨難字括號中文，更適合小朋友閱讀！
+            同時，故事中穿插了 <b>Q & A 挑戰</b>，回答對越多，上方的進度條就越滿哦！✨
           </p>
         </div>
       </div>
 
-      {/* Main Story Board */}
+      {/* Progress Bar Widget */}
+      <div className="p-5 bg-white rounded-2.5xl border border-slate-300/30 shadow-sm space-y-2">
+        <div className="flex justify-between items-center text-sm font-extrabold text-[#5c3e16]">
+          <span className="flex items-center gap-1.5 text-amber-700">
+            👑 Q & A 挑戰學習進度 (Learning Progress):
+          </span>
+          <span className="bg-amber-100 text-amber-900 px-3 py-0.5 rounded-full text-xs">
+            {answeredCount} / {totalQuestions} 已答對
+          </span>
+        </div>
+        <div className="w-full bg-slate-100 rounded-full h-4 overflow-hidden p-0.5 border border-slate-200">
+          <div 
+            className="bg-gradient-to-r from-amber-400 to-amber-500 h-full rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Main Story Book Card */}
       <div className="bg-white rounded-3xl border-4 border-amber-200 shadow-xl overflow-hidden animate-fade-in">
         {/* Story Board Title */}
-        <div className="bg-gradient-to-r from-amber-100 via-amber-200/50 to-orange-100 p-6 flex flex-col sm:flex-row justify-between items-center text-amber-950 border-b-4 border-amber-200 gap-4">
+        <div className="bg-gradient-to-r from-amber-100/60 via-[#f9f7f4] to-orange-100/40 p-6 flex items-center justify-between text-[#5c3e16] border-b-4 border-amber-150">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🔮</span>
+            <span className="text-2xl">🔮</span>
             <div>
-              <h3 className="font-extrabold text-xl tracking-wide">
-                聽故事學英文 Read Section
+              <h3 className="font-extrabold text-lg tracking-wide">
+                奇幻故事朗讀冒險 Story Mode
               </h3>
-              <p className="text-xs text-amber-900 font-medium opacity-80">
-                點擊橘色字會有發音跟例句喔！
+              <p className="text-xs text-amber-900/80 font-semibold mt-0.5">
+                一句一句分行排版，方便小朋友手指點讀對照單詞！
               </p>
             </div>
           </div>
-          <button
-            onClick={() => {
-              // Read all clean text of paragraph 1 to 10
-              const fullText = FULL_STORY_PARAGRAPHS.map(p => p.en.replace(/\{/g, '').replace(/\}/g, '')).join(' ');
-              playTTS(fullText.slice(0, 300) + "..."); // Just standard sample
-            }}
-            className="flex items-center gap-2 px-4 py-2 bg-white text-orange-600 hover:bg-orange-50 active:scale-95 text-sm font-bold rounded-2xl shadow-sm transition-all cursor-pointer border border-amber-105"
-          >
-            <Volume2 className="w-4 h-4" />
-            <span>朗讀全部故事 (前半段)</span>
-          </button>
         </div>
 
         {/* Paragraph List */}
-        <div className="divide-y divide-amber-100/40 p-2 md:p-6 bg-[#FCFCF9]">
-          {FULL_STORY_PARAGRAPHS.map((para, index) => {
+        <div className="divide-y divide-amber-100/40 p-3 md:p-6 bg-[#FCFCF9]">
+          {FULL_STORY_PARAGRAPHS.map((para) => {
             const isTranslated = !!translatedParagraphs[para.id];
+            const sentences = splitIntoSentences(para.en);
+            const embeddedQuizzes = PARAGRAPH_QUESTIONS_MAP[para.id] || [];
+
             return (
               <div 
                 key={para.id} 
-                className="py-6 px-4 hover:bg-[#fdfcf0]/50 rounded-2xl transition-all duration-300 group relative border border-transparent hover:border-amber-100/55"
+                className="py-6 px-4 md:px-6 hover:bg-[#fdfcf0]/40 rounded-2xl transition-all duration-300 relative border border-transparent hover:border-amber-100/35 space-y-4"
               >
-                {/* Paragraph number banner */}
-                <div className="absolute top-6 -left-2 w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-sm shadow-xs">
+                {/* Paragraph Side Number Bullet */}
+                <div className="absolute top-6 left-2 w-7 h-7 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center font-black text-xs shadow-xs">
                   {para.id}
                 </div>
 
-                <div className="pl-6 space-y-4">
-                  {/* English content */}
-                  <div className="text-[#4a453e] text-base md:text-lg font-medium leading-relaxed tracking-wide">
-                    {renderInteractiveEnglish(para.en)}
+                <div className="pl-8 space-y-4">
+                  {/* English content sentence-by-sentence */}
+                  <div className="space-y-3">
+                    {sentences.map((sentence, idx) => (
+                      <div 
+                        key={idx} 
+                        className="text-[#4a453e] text-base md:text-lg font-semibold leading-relaxed tracking-wide flex items-start gap-2.5 hover:text-slate-900 transition-colors"
+                      >
+                        <span className="text-[10px] mt-2 shrink-0 text-amber-500">⭐</span>
+                        <p className="flex-1">{renderInteractiveEnglish(sentence)}</p>
+                      </div>
+                    ))}
                   </div>
 
                   {/* Actions Row */}
-                  <div className="flex gap-2.5 pt-2">
-                    {/* Read Paragraph button */}
-                    <button
-                      onClick={(e) => handleSpeakFullParagraph(para.en, e)}
-                      className="p-1 px-3 text-xs font-semibold text-amber-800 hover:text-[#e07a5f] bg-[#f5efe2]/60 hover:bg-amber-100 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
-                      title="Read this paragraph"
-                    >
-                      <Volume2 className="w-3.5 h-3.5" />
-                      <span>聽朗讀</span>
-                    </button>
-
+                  <div className="flex items-center gap-3 pt-1">
                     {/* Translate toggle button */}
                     <button
                       onClick={() => toggleTranslation(para.id)}
-                      className={`p-1 px-3 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
+                      className={`px-4 py-1.5 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border ${
                         isTranslated 
-                          ? 'bg-amber-100 text-amber-900 border border-amber-200' 
-                          : 'bg-[#f5efe2]/60 text-amber-800 text-[#4a453e] hover:bg-amber-100 hover:text-amber-900'
+                          ? 'bg-amber-100 text-amber-950 border-amber-300' 
+                          : 'bg-amber-50 text-amber-900 border-amber-200/50 hover:bg-amber-100'
                       }`}
                     >
                       <Languages className="w-3.5 h-3.5" />
-                      <span>{isTranslated ? '隱藏翻譯' : '翻譯成繁體中文'}</span>
+                      <span>{isTranslated ? '隱藏翻譯 Close' : '對照繁體中文 Translate'}</span>
                     </button>
                   </div>
 
@@ -220,12 +276,116 @@ export default function StorySection() {
                         transition={{ duration: 0.25, ease: 'easeOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-3 p-4 bg-indigo-50/50 border border-indigo-100/50 rounded-2xl text-slate-600 text-sm md:text-base font-semibold leading-relaxed">
-                          🧑‍🏫 中文對照： {para.zh}
+                        <div className="mt-2 p-4 bg-indigo-50/50 border border-indigo-100/30 rounded-2xl text-slate-700 text-sm md:text-base font-bold leading-relaxed">
+                          🙋‍♂️ 中文對照翻譯： {para.zh}
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
+
+                  {/* Embed Q&A questions associated with this paragraph */}
+                  {embeddedQuizzes.length > 0 && (
+                    <div className="mt-6 pt-4 border-t border-dashed border-amber-200/60 space-y-4">
+                      {embeddedQuizzes.map((qIdx) => {
+                        const questionObj = LITTLE_FOX_QUESTIONS[qIdx];
+                        const selectedVal = answers[qIdx];
+                        const isHintRevealed = !!showAnswerFeedback[qIdx];
+                        const isCorrect = selectedVal === questionObj.answer;
+
+                        return (
+                          <div 
+                            key={qIdx} 
+                            className="p-5 md:p-6 rounded-2.5xl bg-gradient-to-b from-[#fdfcf5] to-[#f8f6ee] border-2 border-amber-300/60 shadow-sm space-y-4"
+                          >
+                            {/* Header metadata label */}
+                            <div className="flex items-center justify-between">
+                              <span className="flex items-center gap-1.5 text-xs font-extrabold text-amber-900 bg-amber-100 px-3 py-1 rounded-full">
+                                <HelpCircle className="w-3.5 h-3.5 animate-bounce" />
+                                Q & A
+                              </span>
+                              {selectedVal && (
+                                <span className={`text-xs font-black px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
+                                  isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                                }`}>
+                                  {isCorrect ? <Check className="w-3 h-3" /> : <X className="w-3 h-3" />}
+                                  {isCorrect ? "Correct! 答對了" : "Incorrect! 答錯囉"}
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Question sentence */}
+                            <div>
+                              <p className="text-slate-900 text-base md:text-lg font-black tracking-wide">
+                                {questionObj.question}
+                              </p>
+                              {questionObj.zh_translation && (
+                                <p className="text-xs text-[#5c3e16] font-bold mt-1">
+                                  💭問題中文：{questionObj.zh_translation}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Option buttons */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                              {questionObj.options.map((opt) => {
+                                const isSelected = selectedVal === opt;
+                                let btnStyle = "border-slate-300/70 bg-white hover:bg-slate-50 text-slate-800";
+                                
+                                if (isSelected) {
+                                  if (opt === questionObj.answer) {
+                                    btnStyle = "bg-emerald-100 border-emerald-500 text-emerald-900";
+                                  } else {
+                                    btnStyle = "bg-rose-100 border-rose-500 text-rose-900";
+                                  }
+                                }
+
+                                return (
+                                  <button
+                                    key={opt}
+                                    onClick={() => handleSelectOption(qIdx, opt, questionObj.answer)}
+                                    className={`px-4 py-2.5 text-sm font-extrabold rounded-xl border-2 transition-all cursor-pointer text-center outline-none active:scale-97 ${btnStyle}`}
+                                  >
+                                    {opt}
+                                  </button>
+                                );
+                              })}
+                            </div>
+
+                            {/* Interactive Explanation & Show Answer buttons */}
+                            <div className="flex gap-2.5 items-center justify-end">
+                              <button
+                                onClick={() => toggleHintRevealed(qIdx)}
+                                className="px-3 py-1.5 text-xs font-bold text-amber-800 bg-[#f5efe2]/40 rounded-lg hover:bg-amber-100 transition-colors shadow-xs cursor-pointer border border-amber-250"
+                              >
+                                {isHintRevealed ? '隱藏提示 Close Answer' : '點擊顯示答案 Show Answer'}
+                              </button>
+                            </div>
+
+                            {/* Hint contents section */}
+                            <AnimatePresence>
+                              {isHintRevealed && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: -10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -10 }}
+                                  className="p-3 bg-amber-50 rounded-xl border border-amber-250 text-[#5c3e16] text-xs font-bold space-y-1.5"
+                                >
+                                  <p className="text-emerald-800">
+                                    💡 正確答案 (Correct Answer)： <b className="underline uppercase">{questionObj.answer}</b>
+                                  </p>
+                                  {questionObj.hint && (
+                                    <p className="text-slate-600 font-medium">
+                                      ✨ 提示 (Reading Tip)： {questionObj.hint}
+                                    </p>
+                                  )}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -233,243 +393,7 @@ export default function StorySection() {
         </div>
       </div>
 
-      {/* Shadow Reading Section */}
-      <div className="relative overflow-hidden rounded-3xl border-4 border-amber-500 bg-[#2b2723] p-6 md:p-8 text-[#fdfcf0] shadow-xl">
-        {/* Background stars */}
-        <div className="absolute top-0 right-0 p-3 opacity-20 text-amber-200 text-6xl pointer-events-none select-none font-sans animate-pulse">
-          ✨🔮✨
-        </div>
-
-        {/* Heading */}
-        <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center text-2xl shadow-sm shadow-amber-500/30">
-              🎤
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                Shadow Reading 影子模仿朗讀
-              </h3>
-              <p className="text-xs text-amber-200 font-medium">
-                練習大聲說英文！模仿驚訝、生氣與好玩聲音
-              </p>
-            </div>
-          </div>
-
-          {/* Quick Tab Pick */}
-          <div className="flex gap-2 bg-[#1c1a17] p-1 rounded-xl border border-white/5">
-            <button
-              onClick={() => setActiveShadowTab('dialogue')}
-              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                activeShadowTab === 'dialogue' 
-                  ? 'bg-amber-500 text-white shadow-sm' 
-                  : 'text-amber-200/60 hover:text-white'
-              }`}
-            >
-              選段一：角色對話
-            </button>
-            <button
-              onClick={() => setActiveShadowTab('action')}
-              className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                activeShadowTab === 'action' 
-                  ? 'bg-amber-500 text-white shadow-sm' 
-                  : 'text-amber-200/60 hover:text-white'
-              }`}
-            >
-              選段二：趣味聲音
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Content Display */}
-        {activeShadowTab === 'dialogue' ? (
-          <div className="space-y-6">
-            <div className="p-4 bg-[#1c1a17]/50 rounded-2.5xl border border-amber-500/30">
-              <span className="text-xs font-bold text-amber-200 tracking-wider">🌟 聽一聽、大聲模仿</span>
-              
-              {/* Dialogue Script */}
-              <div className="mt-4 space-y-4">
-                {/* Line 1 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">🧙‍♂️</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-amber-300">Tom (好奇發問)</span>
-                    <p className="text-lg font-bold text-white leading-snug">
-                      &quot;What's going on?&quot;
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：聲音往上揚，呈現出好奇、大大的疑問！🗣️</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("What's going on?")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Line 2 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">🐱</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-teal-300">Cat (分享秘密)</span>
-                    <p className="text-lg font-bold text-white leading-snug">
-                      &quot;There's a birthday party tomorrow.&quot;
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：像在跟同伴說悄悄話，速度平穩、放輕聲調喔！🤫</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("There's a birthday party tomorrow.")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Line 3 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">😠</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-rose-400">Dirk (大聲命令)</span>
-                    <p className="text-lg font-bold text-white leading-snug">
-                      &quot;Come with me!&quot;
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：大聲、用力、命令的口氣粗魯地說出來！💨</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("Come with me!")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Micro Interaction Recorder Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2.5xl bg-amber-500/10 border border-amber-500/20">
-              <div className="text-sm">
-                <span className="font-bold text-amber-300 block">🎤 大聲念一遍挑戰</span>
-                讀完了嗎？按下麥克風「大聲念出這三行」，讓魔法貓咪給你評分！
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => triggerShadowSuccess('dialogue')}
-                  className="px-5 py-2.5 bg-gradient-to-r from-teal-400 to-emerald-500 text-white font-bold text-sm rounded-xl hover:scale-105 transition-all flex items-center gap-2 shadow-md cursor-pointer"
-                >
-                  <Mic className="w-4 h-4" />
-                  <span>我念完了！</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="p-4 bg-[#1c1a17]/50 rounded-2.5xl border border-amber-500/30">
-              <span className="text-xs font-bold text-amber-200 tracking-wider">🤧 狀聲詞超逗趣模仿</span>
-
-              {/* Action Script */}
-              <div className="mt-4 space-y-4">
-                {/* Line 1 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">👑</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-yellow-300">The Queen (大哈啾)</span>
-                    <p className="text-lg font-bold text-white leading-snug">
-                      &quot;Ah-choo!&quot; <span className="text-sm text-sky-200">(The queen sneezed.)</span>
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：真誠大聲地表演哈啾打噴嚏，全班最愛模仿！🤧</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("Ah-choo! The queen sneezed.")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Line 2 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">🤵</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-orange-300">Tom (不可置信)</span>
-                    <p className="text-lg font-bold text-white leading-snug">
-                      &quot;A dog?&quot; <span className="text-sm text-amber-250">(Tom repeated.)</span>
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：尾音無限拉高，表現出十分驚訝和不安！🐶❓</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("A dog? Tom repeated")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Line 3 */}
-                <div className="flex items-start gap-3 bg-[#13110f]/60 p-3 rounded-2xl relative">
-                  <span className="text-2xl mt-1 shrink-0">🐈</span>
-                  <div className="flex-1">
-                    <span className="text-xs font-bold text-rose-300">Cat (瘋狂生氣哈氣)</span>
-                    <p className="text-lg font-black tracking-widest text-rose-450 leading-snug">
-                      Hiss!
-                    </p>
-                    <p className="text-xs text-amber-200/60 mt-1">💡 影子朗讀提示：牙齒咬合，發出貓咪狂怒嘶吼警告的「嘶——」聲音！😼💨</p>
-                  </div>
-                  <button 
-                    onClick={() => playTTS("Hiss")}
-                    className="p-2.5 rounded-xl bg-[#24211e] hover:bg-[#34302d] text-amber-400 hover:text-amber-300 transition-colors cursor-pointer self-center"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Micro Interaction Recorder Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2.5xl bg-amber-500/10 border border-amber-500/20">
-              <div className="text-sm">
-                <span className="font-bold text-rose-300 block">🐈 戲劇效果聲音挑戰</span>
-                大聲模仿女王打噴嚏和生氣哈氣吧，演得越逼真魔法值越高！
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => triggerShadowSuccess('action')}
-                  className="px-5 py-2.5 bg-gradient-to-r from-teal-400 to-emerald-500 text-white font-bold text-sm rounded-xl hover:scale-105 transition-all flex items-center gap-2 shadow-md cursor-pointer"
-                >
-                  <Mic className="w-4 h-4" />
-                  <span>我念完了！</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Feedback popup with AnimatePresence */}
-        <AnimatePresence>
-          {showSpeechCheck && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.8 }}
-              className="absolute inset-0 bg-[#2b2723]/95 flex flex-col items-center justify-center text-center p-6 rounded-2.5xl border border-amber-300"
-            >
-              <div className="text-5xl animate-bounce mb-3">⭐⭐⭐</div>
-              <h4 className="text-2xl font-black text-amber-300">Fantastic Reading! 🌟</h4>
-              <p className="text-amber-100 max-w-sm text-sm mt-1">
-                「太棒了！你的語氣與高低起伏分明，貓咪聽了高興得翻滾打滾！」🐾✨
-              </p>
-              <button 
-                onClick={() => setShowSpeechCheck(null)} 
-                className="mt-4 px-4 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-lg cursor-pointer"
-              >
-                關閉 Close
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Global Word Details Popup Modal */}
+      {/* Global Words Popup Dialog */}
       {selectedWord && (
         <WordPopup
           wordDetail={selectedWord}
