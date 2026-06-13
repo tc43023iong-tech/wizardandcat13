@@ -71,18 +71,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Quick Stats or Magic Energy Badge */}
-          <div className="flex items-center gap-4 bg-white/90 backdrop-blur-md p-4 rounded-3xl border border-amber-150 shadow-sm">
-            <span className="text-3xl animate-pulse">✨</span>
-            <div className="text-left">
-              <span className="text-[10px] font-black text-amber-700 block tracking-widest uppercase">
-                MAGIC READING HUB
-              </span>
-              <span className="text-sm font-bold text-amber-900">
-                第三冊 ∙ 第13章生日會
-              </span>
-            </div>
-          </div>
+          {/* Quick Stats deleted as per user request */}
         </div>
       </header>
 

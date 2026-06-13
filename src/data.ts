@@ -12,7 +12,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈrɔɪəl ˈbɔːlruːm/",
     zh: "皇家宴會廳",
     emoji: "🏰",
-    explanation: "城堡裡舉辦盛大派對和跳舞的漂亮大廳！✨",
+    explanation: "A beautiful big hall in a castle for grand parties and dancing! (城堡裡舉辦盛大派對和跳舞的漂亮大廳！✨)",
     en_example: "Tom looked in the Royal Ballroom.",
     zh_example: "湯姆朝皇家宴會廳裡面看去。"
   },
@@ -22,7 +22,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈstriːmərz/",
     zh: "五彩裝飾彩帶",
     emoji: "🎗️",
-    explanation: "用來佈置派對、掛在天花板上的彩色長條紙帶，隨風飄動超美麗！🎈",
+    explanation: "Long colored paper strips hung from the ceiling to decorate parties. (用來佈置派對、掛在天花板上的彩色長條紙帶！🎈)",
     en_example: "Streamers hung from the ceiling.",
     zh_example: "彩帶從天花板上掛了下來。"
   },
@@ -32,7 +32,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈsiːlɪŋ/",
     zh: "天花板",
     emoji: "🏠",
-    explanation: "房間裡的最上方頂棚，和地板相對的地方！🚪",
+    explanation: "The top surface of a room, opposite to the floor. (房間最上方、與地板相對的頂部天花板！🚪)",
     en_example: "Beautiful balloons touched the ceiling.",
     zh_example: "漂亮的氣球碰到了天花板。"
   },
@@ -42,7 +42,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈsɜːrvənts/",
     zh: "僕人 / 助手",
     emoji: "🧑‍🍳",
-    explanation: "在皇宮裡辛勤工作，幫忙擺鮮花、做美味食物的好幫手！🧹",
+    explanation: "Helpers who work hard in the palace to set up flowers and prepare food. (在皇宮裡辛勤工作、幫忙佈置鮮花與食物的幫手！🧹)",
     en_example: "Servants were putting flowers on the tables.",
     zh_example: "僕人們正在把鮮花擺到桌子上。"
   },
@@ -52,7 +52,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/piːkt/",
     zh: "偷看 / 探頭看",
     emoji: "👀",
-    explanation: "小聲地、悄悄地從某個地方探出小腦袋，偷偷看！🙈",
+    explanation: "Looking secretly and quickly from somewhere. (小聲地、悄悄地從某個地方探出小腦袋偷看！🙈)",
     en_example: "Cat peeked out of Tom's pocket.",
     zh_example: "貓咪從湯姆的口袋裡探出頭來偷看。"
   },
@@ -62,7 +62,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈpɒkɪt/",
     zh: "口袋",
     emoji: "🧥",
-    explanation: "衣服衣服上面，可以用來裝糖果、小鑰匙或是小寵物的小袋子！🍬",
+    explanation: "A small bag on clothes to keep candies, keys, or small pets! (衣服外套上的小袋子，用來裝糖果、鑰匙或小貓咪！🍬)",
     en_example: "Tom had a cute kitten in his jacket pocket.",
     zh_example: "湯姆的外套口袋裡有一隻可愛的小貓。"
   },
@@ -72,7 +72,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/əˈpɪərd/",
     zh: "突然出現",
     emoji: "🌟",
-    explanation: "本來沒看見，突然間咻地一下出現在眼睛前面！🧙‍♂️",
+    explanation: "Coming into view suddenly when not seen before. (本來沒看見，突然間咻地一下出現在眼睛前面！🧙‍♂️)",
     en_example: "Just then Dirk appeared.",
     zh_example: "就在那時候，德克突然出現了。"
   },
@@ -82,7 +82,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/snæpt/",
     zh: "厲聲說 / 兇巴巴地說",
     emoji: "🗣️",
-    explanation: "說話口氣又快又兇，一聽就知道他現在正在大發脾氣！⚡",
+    explanation: "Speaking quickly and angrily in a loud voice. (說話速度又快又兇，一聽就知道正在生氣！⚡)",
     en_example: "\"Come with me!\" he snapped at Tom.",
     zh_example: "「跟我來！」他粗魯地朝湯姆嚷嚷。"
   },
@@ -92,7 +92,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/æt wʌns/",
     zh: "立刻 / 馬上",
     emoji: "⚡",
-    explanation: "一秒鐘都不能等，要火速、趕快去做！🏃‍♂️💨",
+    explanation: "Right now without a second of waiting; very fast! (一秒鐘都不能等，要火速、趕快去做！🏃‍♂️💨)",
     en_example: "The queen wants to see you at once.",
     zh_example: "女王想要立刻見你。"
   },
@@ -102,7 +102,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/θroʊn ruːm/",
     zh: "覲見大廳 / 王座廳",
     emoji: "👑",
-    explanation: "城堡裡最華麗、最高的房間，國王和女王坐在亮晶晶的王座上接見客人的地方！💎",
+    explanation: "The most grand room in a castle where the king or queen sits on their throne. (城堡裡最華麗的房間，女王坐在寶座上接見大家的地方！💎)",
     en_example: "Tom hurried after Dirk to the Throne Room.",
     zh_example: "湯姆急忙跟著德克走進王座廳。"
   },
@@ -112,7 +112,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/sniːz/",
     zh: "打噴嚏",
     emoji: "🤧",
-    explanation: "鼻子吸到灰塵或貓毛，忍不住「哈啾——！」大聲噴氣的動作！🌫️",
+    explanation: "Making a sudden loud 'Ah-choo!' when dust or cat hair gets in your nose. (鼻子吸到灰塵而大聲噴氣的動作「哈啾」！🌫️)",
     en_example: "Cat might make the queen sneeze.",
     zh_example: "貓咪可能會讓女王打噴嚏。"
   },
@@ -122,7 +122,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈrɪɡəld/",
     zh: "扭動 / 抽動",
     emoji: "🐛",
-    explanation: "像毛毛蟲一樣，左右歪歪扭扭地動來動去，非常可愛！🐶",
+    explanation: "Moving from side to side like a little worm; very cute! (像小蟲子或狗狗鼻子，左右歪歪扭扭地動來動去！🐶)",
     en_example: "The queen's nose wriggled.",
     zh_example: "女王的鼻子扭了扭。"
   },
@@ -132,7 +132,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈhæŋkərtʃɪf/",
     zh: "手帕",
     emoji: "🧼",
-    explanation: "打噴嚏或擦眼淚時，隨身攜帶、軟綿綿的小手帕！👃",
+    explanation: "A soft cloth carried with you to wipe your nose or tears. (隨身攜帶、打噴嚏或擦眼淚用的軟綿飾小手帕！👃)",
     en_example: "She pulled out her handkerchief.",
     zh_example: "她掏出她的手帕。"
   },
@@ -142,7 +142,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈmædʒəsti/",
     zh: "陛下",
     emoji: "👑",
-    explanation: "👑 和女王或國王講話時，最恭敬、最崇高的招呼詞！🏰",
+    explanation: "A grand title used when speaking politely to a king or queen. (與國王或女王說話時，最恭敬的稱呼「陛下」！🏰)",
     en_example: "\"Good morning, Your Majesty,\" said Tom.",
     zh_example: "「早安，女王陛下，」湯姆說。"
   },
@@ -152,7 +152,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/hɪs/",
     zh: "生氣嘶叫",
     emoji: "🐱⚡",
-    explanation: "貓咪生氣、毛豎起來的時候，喉嚨裡發出「噓——」的高聲警告！😾",
+    explanation: "An angry warning sound made by cats when they are upset. (貓咪生氣憤怒時，喉嚨裡發出的「噓——」聲警告！😾)",
     en_example: "A loud hiss came from Tom's pocket.",
     zh_example: "湯姆的口袋裡傳來了一聲響亮的貓咪嘶聲。"
   },
@@ -162,7 +162,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/klɔːz/",
     zh: "尖銳的爪子",
     emoji: "🐾",
-    explanation: "貓咪腳掌掌下面，藏著尖尖的指甲！😼",
+    explanation: "Specific sharp nails on a cat or animal's paws. (貓咪或動物腳掌掌心收納的尖尖細細指甲！😼)",
     en_example: "Tom felt Cat's sharp claws in his pocket.",
     zh_example: "湯姆感覺到口袋裡貓咪那銳利的爪子。"
   },
@@ -172,7 +172,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/hʌŋ/",
     zh: "掛著",
     emoji: "🎗️",
-    explanation: "彩帶或裝飾品垂吊掛在上面",
+    explanation: "To be suspended from above. (彩帶或物件垂吊掛在上面！)",
     en_example: "Balloons hung on the wall.",
     zh_example: "氣球掛在牆壁上。"
   },
@@ -182,7 +182,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/təˈmɒroʊ/",
     zh: "明天",
     emoji: "📅",
-    explanation: "今天的下一個日子，睡一覺醒來就是明天啦！",
+    explanation: "The day after today. (今天的下一個日子，睡一覺醒來就是囉！)",
     en_example: "My birthday is tomorrow.",
     zh_example: "我的生日是明天。"
   },
@@ -192,7 +192,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/hɜːrd/",
     zh: "聽到",
     emoji: "👂",
-    explanation: "耳朵裡收到別人的說話聲、敲門聲或是小動物叫聲",
+    explanation: "To receive sound with ears. (雙耳接收到別人的説話聲或周圍發出的聲音！)",
     en_example: "Tom heard a loud noise.",
     zh_example: "湯姆聽到了一聲吵雜的噪聲。"
   },
@@ -202,7 +202,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈhʌrid/",
     zh: "趕忙 / 急忙",
     emoji: "🏃‍♂️💨",
-    explanation: "步子邁得特別急，怕去太晚了",
+    explanation: "Moving or acting with great haste or speed. (腳步走得特別快，急著去某個地方！)",
     en_example: "They hurried home.",
     zh_example: "他們急忙趕回家。"
   },
@@ -212,7 +212,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/wɒz stɪl/",
     zh: "依然在 / 還在",
     emoji: "⏳",
-    explanation: "維持原來的樣子不辦，依然留在那裡沒有動",
+    explanation: "Remaining in the same place without moving. (一直留在原處，沒有移動位置！)",
     en_example: "Cat was still in his pocket.",
     zh_example: "貓咪還待在他的口袋裡。"
   },
@@ -222,7 +222,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/θɔːt/",
     zh: "想 / 心想",
     emoji: "💡",
-    explanation: "在小腦袋瓜裡轉來轉去，默默地思考",
+    explanation: "Created ideas or opinions in your mind, thinking quietly. (在小腦瓜袋裡，安靜地盤算思考！)",
     en_example: "\"This is fun,\" Tom thought.",
     zh_example: "「這真好玩，」湯姆想著。"
   },
@@ -232,7 +232,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/maɪt/",
     zh: "也許 / 可能",
     emoji: "🤷‍♂️",
-    explanation: "說不定、或許會發生這樣的事，但還不能百分百確定",
+    explanation: "Used to show that something is possible but not 100% sure. (很有可能發生這樣的事情，但現在還不百分百肯定！)",
     en_example: "It might rain today.",
     zh_example: "今天也許會下雨。"
   },
@@ -242,7 +242,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/θroʊn/",
     zh: "王座 / 漂亮的龍椅",
     emoji: "👑",
-    explanation: "城堡裡專門給國王、女王坐的，最豪華的椅子",
+    explanation: "The special royal chair for a king or queen. (城堡內專供國王、女王坐的，最豪華高貴的大椅子！)",
     en_example: "The King is on his throne.",
     zh_example: "國王坐在他的王座上。"
   },
@@ -252,9 +252,9 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/baʊd/",
     zh: "鞠躬 / 彎腰敬禮",
     emoji: "🙇‍♂️",
-    explanation: "把上半身向前向下彎，用來表示對別人的禮貌 and 尊敬",
+    explanation: "Bending the body forward to show politeness and respect. (彎下上半身，來向別人表示禮貌與尊敬！)",
     en_example: "He bowed to the audience.",
-    zh_example: "He bowed to the audience."
+    zh_example: "他向全體觀眾彎腰鞠躬敬禮。"
   },
   {
     id: "126",
@@ -262,7 +262,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/pʊld aʊt/",
     zh: "掏出 / 拿出來",
     emoji: "🎒",
-    explanation: "把手伸口袋或包包，取出裡頭放的東西",
+    explanation: "Taking something out from a pocket, bag, or drawer. (把手伸進口袋，取出裡面裝著的物品！)",
     en_example: "She pulled out a pen.",
     zh_example: "她掏出了一支原子筆。"
   },
@@ -272,7 +272,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/niːd/",
     zh: "需要",
     emoji: "🥤",
-    explanation: "極度希望得到某個東西，或是想做某件事",
+    explanation: "To require something that is very important or wanted. (必須得到或急需某個對你很重要的東西！)",
     en_example: "I need some milk.",
     zh_example: "我需要一些牛奶。"
   },
@@ -282,7 +282,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/bluː/",
     zh: "擤 / 吹",
     emoji: "🤧",
-    explanation: "用手帕或衛生紙摀住鼻子用力噴氣，擦乾淨鼻涕",
+    explanation: "Clearing your nose with pressure into a tissue or cloth. (用力憋氣用手帕捂住鼻子噴氣，好把鼻子清理乾淨！)",
     en_example: "The queen blew her nose.",
     zh_example: "女王擦了擦鼻子。"
   },
@@ -292,7 +292,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ˈspeʃəl/",
     zh: "特別的",
     emoji: "🌟",
-    explanation: "跟一般普通的不一樣，格外珍貴、讓人眼睛一亮的",
+    explanation: "Better or different from normal, very precious. (和一般普通的食物或東西不一樣，格外珍貴、少見！)",
     en_example: "This is a special bag.",
     zh_example: "這是一個特別的袋子。"
   },
@@ -302,7 +302,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/rɪˈpiːtɪd/",
     zh: "重複說 / 跟著說",
     emoji: "🦜",
-    explanation: "別人剛講完一句，自己也跟著把一樣的話再重播一遍",
+    explanation: "Saying or doing something again after someone else. (別人剛說完，自己也立刻跟著把相同的話說一次！)",
     en_example: "\"A cat?\" Tom repeated.",
     zh_example: "「一隻貓？」湯姆跟著重複說。"
   },
@@ -312,7 +312,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/laʊd/",
     zh: "大聲的",
     emoji: "📢",
-    explanation: "音量很大，在好遠的地方都能聽得到的聲音",
+    explanation: "Having a high volume of sound that is easy to hear. (聲音的分貝特別大，在很遠的地方也能清楚聽見！)",
     en_example: "There is a loud music playing.",
     zh_example: "正在播放大聲的音樂。"
   },
@@ -322,7 +322,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/saʊnd/",
     zh: "聲音",
     emoji: "🎵",
-    explanation: "傳入耳朵的所有聲響特徵",
+    explanation: "Anything that can be heard by ears. (雙耳能聽到的一切聲響特徵！)",
     en_example: "He heard a funny sound.",
     zh_example: "他聽到了一個好笑的聲音。"
   },
@@ -332,7 +332,7 @@ export const VOCABULARY_DATA: WordDetail[] = [
     ipa: "/ʃɑːrp/",
     zh: "尖銳的 / 刺痛的",
     emoji: "🔪",
-    explanation: "戳下去會麻麻癢癢、痛感很顯著的",
+    explanation: "Having a thin edge or point that could hurt slightly. (戳到或碰觸時，會感覺刺刺痛痛或是很銳利的！)",
     en_example: "Watch out for the sharp needle.",
     zh_example: "小心那根尖銳的針。"
   }
@@ -413,7 +413,7 @@ export const LITTLE_FOX_QUESTIONS: QuizQuestion[] = [
   {
     question: "What did Tom feel in his pocket (口袋)?",
     zh_translation: "湯姆在口袋裡感覺到了什麼？",
-    options: ["Cat's tail", "Cat's teeth", "Cat's claws"],
+    options: ["Cat's tail (尾巴)", "Cat's teeth (牙齒)", "Cat's claws"],
     answer: "Cat's claws",
     hint: "Hint: Ouch! Cat has sharp nails on her feet that hurt when she is angry! 🐾"
   },

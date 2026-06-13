@@ -208,8 +208,8 @@ export default function StorySection() {
           </div>
         </div>
 
-        {/* Paragraph List */}
-        <div className="divide-y divide-amber-100/40 p-3 md:p-6 bg-[#FCFCF9]">
+        {/* Paragraph List with light lines to transition between paragraphs */}
+        <div className="divide-y divide-slate-200/70 p-3 md:p-6 bg-[#FCFCF9]">
           {FULL_STORY_PARAGRAPHS.map((para) => {
             const isTranslated = !!translatedParagraphs[para.id];
             const sentences = splitIntoSentences(para.en);
@@ -225,34 +225,31 @@ export default function StorySection() {
                   {para.id}
                 </div>
 
-                <div className="pl-8 space-y-4">
+                {/* Translate Button - ☁️ emoji under top-right */}
+                <button
+                  onClick={() => toggleTranslation(para.id)}
+                  className={`absolute top-5 right-3 md:right-5 w-9 h-9 rounded-full border flex items-center justify-center cursor-pointer transition-all hover:scale-110 active:scale-95 shadow-sm z-10 ${
+                    isTranslated 
+                      ? 'bg-amber-100 border-amber-300 text-amber-950' 
+                      : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                  }`}
+                  title={isTranslated ? '隱藏翻譯 Close' : '對照繁體中文 Translate'}
+                >
+                  <span className="text-base select-none">☁️</span>
+                </button>
+
+                <div className="pl-8 pr-8 sm:pr-12 space-y-4">
                   {/* English content sentence-by-sentence */}
                   <div className="space-y-3">
                     {sentences.map((sentence, idx) => (
                       <div 
                         key={idx} 
-                        className="text-[#4a453e] text-base md:text-lg font-semibold leading-relaxed tracking-wide flex items-start gap-2.5 hover:text-slate-900 transition-colors"
+                        className="text-[#4a453e] text-base md:text-lg font-semibold leading-relaxed tracking-wide flex items-start gap-2.5 hover:text-slate-900 transition-colors mr-2"
                       >
                         <span className="text-[10px] mt-2 shrink-0 text-amber-500">⭐</span>
                         <p className="flex-1">{renderInteractiveEnglish(sentence)}</p>
                       </div>
                     ))}
-                  </div>
-
-                  {/* Actions Row */}
-                  <div className="flex items-center gap-3 pt-1">
-                    {/* Translate toggle button */}
-                    <button
-                      onClick={() => toggleTranslation(para.id)}
-                      className={`px-4 py-1.5 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer border ${
-                        isTranslated 
-                          ? 'bg-amber-100 text-amber-950 border-amber-300' 
-                          : 'bg-amber-50 text-amber-900 border-amber-200/50 hover:bg-amber-100'
-                      }`}
-                    >
-                      <Languages className="w-3.5 h-3.5" />
-                      <span>{isTranslated ? '隱藏翻譯 Close' : '對照繁體中文 Translate'}</span>
-                    </button>
                   </div>
 
                   {/* Translated content with animation */}

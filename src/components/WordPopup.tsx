@@ -78,7 +78,7 @@ export default function WordPopup({ wordDetail, onClose }: WordPopupProps) {
             {/* Chinese Meaning */}
             <div className="mb-5 p-4 rounded-2.5xl bg-[#f5efe2]/60 border border-amber-150">
               <div className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-1">
-                華語意思 Meaning
+                中文意思 Meaning
               </div>
               <div className="text-xl font-bold text-[#5c3e16]">
                 {wordDetail.zh}
