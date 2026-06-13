@@ -112,7 +112,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_ballroom_1781280139847.jpg"
+                      src="/assets/images/seq_ballroom_1781343586736.jpg"
                       alt="Tom looking into Royal Ballroom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -182,7 +182,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_dirk_1781280167527.jpg"
+                      src="/assets/images/seq_dirk_1781343624696.jpg"
                       alt="Dirk commands Tom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -228,7 +228,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_queen_1781280182107.jpg"
+                      src="/assets/images/seq_queen_1781343638059.jpg"
                       alt="The Queen sneezing Ah-choo"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -263,7 +263,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_queen_1781280182107.jpg"
+                      src="/assets/images/seq_queen_1781343638059.jpg"
                       alt="The Queen asking Tom for help"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -298,7 +298,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_pocket_1781280153755.jpg"
+                      src="/assets/images/seq_pocket_1781343649071.jpg"
                       alt="Cat scratches inside Tom's pocket"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
