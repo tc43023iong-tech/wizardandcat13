@@ -531,63 +531,63 @@ export const USEFUL_SENTENCES_QUIZ: QuizQuestion[] = [
 export const LADDER_QUESTIONS_BANK: LadderQuestion[] = [
   {
     zh_question: "皇家宴會廳 🏰",
-    options: ["Throne Room", "Royal Ballroom", "Ceiling", "Pocket"],
+    options: ["Royal Ballroom", "Throne Room", "Pocket", "Servants"],
     answer: "Royal Ballroom",
     emoji: "🏰"
   },
   {
-    zh_question: "五彩裝飾彩帶 🎗️",
-    options: ["Streamers", "Majesty", "Servants", "Claws"],
-    answer: "Streamers",
-    emoji: "🎗️"
-  },
-  {
-    zh_question: "偷看 / 探頭窺視 👀",
-    options: ["Sneeze", "Snapped", "Peeked", "Wriggled"],
-    answer: "Peeked",
-    emoji: "👀"
-  },
-  {
-    zh_question: "天花板 🏠",
-    options: ["Ceiling", "Pocket", "Throne Room", "Servants"],
-    answer: "Ceiling",
-    emoji: "🏠"
-  },
-  {
-    zh_question: "跟我來！ 🏃‍♂️💨",
-    options: ["What's going on?", "Come with me!", "I need your help.", "Play with me!"],
-    answer: "Come with me!",
-    emoji: "🏃‍♂️💨"
-  },
-  {
-    zh_question: "貓咪尖銳的爪子 🐾",
-    options: ["Servants", "Claws", "Hiss", "Sneeze"],
-    answer: "Claws",
-    emoji: "🐾"
+    zh_question: "僕人 / 助手 🧹",
+    options: ["Sneeze", "Servants", "Cook", "Claws"],
+    answer: "Servants",
+    emoji: "🧹"
   },
   {
     zh_question: "衣服的口袋 🧥",
-    options: ["Streamers", "Throne Room", "Pocket", "Handkerchief"],
+    options: ["Pocket", "Throne Room", "special", "whose"],
     answer: "Pocket",
     emoji: "🧥"
   },
   {
-    zh_question: "我需要你的幫忙。 🤝",
-    options: ["What's going on?", "I need your help.", "Come with me!", "Thank you."],
-    answer: "I need your help.",
-    emoji: "🤝"
+    zh_question: "覲見大廳 / 王座廳 👑",
+    options: ["Royal Ballroom", "Throne Room", "Pocket", "loud"],
+    answer: "Throne Room",
+    emoji: "👑"
   },
   {
     zh_question: "打噴嚏 哈啾！ 🤧",
-    options: ["Sneeze", "Wriggled", "Snapped", "Peeked"],
+    options: ["sharp", "sound", "Sneeze", "tomorrow"],
     answer: "Sneeze",
     emoji: "🤧"
   },
   {
-    zh_question: "發生了什麼事？ / 怎麼了？ ❓",
-    options: ["What's going on?", "I need your help.", "Come with me!", "Good morning."],
-    answer: "What's going on?",
-    emoji: "❓"
+    zh_question: "尖銳的爪子 🐾",
+    options: ["Claws", "Pocket", "Cook", "need"],
+    answer: "Claws",
+    emoji: "🐾"
+  },
+  {
+    zh_question: "廚師 🧑‍🍳",
+    options: ["Servants", "Cook", "Throne Room", "might"],
+    answer: "Cook",
+    emoji: "🧑‍🍳"
+  },
+  {
+    zh_question: "明天 📅",
+    options: ["tomorrow", "special", "whose", "need"],
+    answer: "tomorrow",
+    emoji: "📅"
+  },
+  {
+    zh_question: "特別的 🌟",
+    options: ["sharp", "loud", "sound", "special"],
+    answer: "special",
+    emoji: "🌟"
+  },
+  {
+    zh_question: "尖銳的 / 刺痛的 🔪",
+    options: ["Pocket", "sharp", "Claws", "need"],
+    answer: "sharp",
+    emoji: "🔪"
   }
 ];
 

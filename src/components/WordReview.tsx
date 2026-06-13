@@ -474,7 +474,7 @@ export default function WordReview() {
               : 'border-transparent text-amber-700/65 hover:text-amber-950'
           }`}
         >
-          📖 單詞複習字面
+          📖 Useful Words
         </button>
         <button
           onClick={() => {
