@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 // Curated high-quality child-friendly/book illustration styled Unsplash URLs matching each story/quiz asset
 const FALLBACK_MAP: { [key: string]: string } = {
-  'seq_ballroom': 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=600', // Party/ballroom with streamers
-  'seq_dirk': 'https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&q=80&w=600', // Messenger/arrival/antique scroll
-  'seq_queen': 'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&q=80&w=600', // Royal Golden Crown/throne
-  'seq_pocket': 'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&q=80&w=600', // Tiny kitten in blanket/pocket
-  'cat_secret': 'https://images.unsplash.com/photo-1574158622643-69d34d72650a?auto=format&fit=crop&q=80&w=600', // Secret whispering cat / cozy cute fluffy cat
-  'quiz_img_1': 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600', // Laughing friends "What's going on!"
-  'quiz_img_2': 'https://images.unsplash.com/photo-1484820540004-14229fe36ca4?auto=format&fit=crop&q=80&w=600', // Person needing help / looking up
-  'quiz_img_3': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600', // Magical glowing butterfly forest "Come with me!"
-  'quiz_img_4': 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=600', // Heavy study bag / stack of books
-  'quiz_img_5': 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=600', // Empty room with party setup
-  'quiz_img_6': 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600', // Cute puppy classmate/toy car playmate
+  'seq_ballroom': 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=600', // Watercolor style colorful celebration background
+  'seq_dirk': 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600', // Whimsical decorative storybook border/illustration
+  'seq_queen': 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600', // Golden magical castle towers, fairytale style
+  'seq_pocket': 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=600', // Cozy cute kitten with funny glasses, playful child-book illustration style
+  'cat_secret': 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600', // Sweet fairytale-like companion cat
+  'quiz_img_1': 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600', // Colorful artistic whimsical painting representing fun/friends
+  'quiz_img_2': 'https://images.unsplash.com/photo-1550147760-44c9966d6bc7?auto=format&fit=crop&q=80&w=600', // Hand-drawn storytelling sketch with sweet whimsical characters
+  'quiz_img_3': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600', // Dreamy glowing forest representing magical butterflies
+  'quiz_img_4': 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=600', // Cozy classic storybooks and wizard castle vibes
+  'quiz_img_5': 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600', // Fantasy golden wizard school/party style setup
+  'quiz_img_6': 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&q=80&w=600', // Cute watercolor baby animal drawing
 };
 
 interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElement> {
