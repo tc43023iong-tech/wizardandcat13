@@ -79,7 +79,7 @@ export default function UsefulSentences() {
       </div>
 
       {/* The 3 Core Sentence Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-col gap-6">
         {USEFUL_SENTENCES.map((item) => {
           const isActive = activeSentenceId === item.id;
           return (
@@ -89,27 +89,14 @@ export default function UsefulSentences() {
                 setActiveSentenceId(isActive ? null : item.id);
                 playTTS(item.sentence);
               }}
-              className="relative overflow-hidden cursor-pointer rounded-3xl border-3 border-amber-150 hover:border-amber-300 bg-white p-6 shadow-md hover:shadow-lg transition-all"
+              className="relative overflow-hidden cursor-pointer rounded-3xl border-3 border-amber-150 hover:border-amber-300 bg-white p-6 md:p-8 shadow-md hover:shadow-lg transition-all flex flex-col md:flex-row gap-6 items-start md:items-center"
             >
               {/* Highlight bar header */}
-              <div className="absolute top-0 right-0 w-24 h-1.5 bg-gradient-to-r from-amber-400 to-[#e9be88]" />
+              <div className="absolute top-0 right-0 w-32 h-1.5 bg-gradient-to-r from-amber-400 to-[#e9be88]" />
               
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-xs font-black text-amber-900 bg-amber-100 px-3 py-1 rounded-full">
-                  句型 {item.id}
-                </span>
-                <button
-                  onClick={(e) => handleSpeak(item.sentence, e)}
-                  className="p-2.5 rounded-xl bg-amber-100/50 hover:bg-amber-100 text-amber-950 active:scale-90 transition-all cursor-pointer"
-                  title="播放聲音"
-                >
-                  <Volume2 className="w-4 h-4" />
-                </button>
-              </div>
-
               {/* Illustration Frame */}
               {item.image && (
-                <div className="mb-4 aspect-video overflow-hidden rounded-2xl border-2 border-amber-100 bg-amber-50 shadow-xs relative">
+                <div className="w-full md:w-56 shrink-0 aspect-video md:aspect-square overflow-hidden rounded-2.5xl border-2 border-amber-100 bg-amber-50 shadow-sm relative">
                   <img
                     src={item.image}
                     alt={item.sentence}
@@ -121,29 +108,48 @@ export default function UsefulSentences() {
                 </div>
               )}
 
-              {/* Big bold quote */}
-              <h3 className="text-xl md:text-2xl font-black text-[#2b2723] leading-snug tracking-tight">
-                🗣️ &quot;{item.sentence}&quot;
-              </h3>
-              
-              <h4 className="mt-1.5 text-base font-extrabold text-[#603e13]">
-                👉 {item.zh}
-              </h4>
+              {/* Card content details */}
+              <div className="flex-1 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-black text-amber-900 bg-amber-100 px-3 py-1 rounded-full">
+                    句型 {item.id}
+                  </span>
+                  <button
+                    onClick={(e) => handleSpeak(item.sentence, e)}
+                    className="p-2.5 rounded-xl bg-amber-100/50 hover:bg-amber-100 text-amber-950 active:scale-90 transition-all cursor-pointer"
+                    title="播放聲音"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                  </button>
+                </div>
 
-              <p className="mt-3 text-xs leading-relaxed text-slate-700 font-bold bg-[#fcf9f2] p-3 rounded-xl border border-amber-150/50">
-                {item.context}
-              </p>
+                {/* Big bold quote */}
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-black text-[#2b2723] leading-snug tracking-tight">
+                    🗣️ &quot;{item.sentence}&quot;
+                  </h3>
+                  <h4 className="mt-1 text-base md:text-lg font-black text-[#603e13]">
+                    👉 {item.zh}
+                  </h4>
+                </div>
 
-              {/* Examples section */}
-              <div className="mt-4 pt-4 border-t border-amber-100/20 space-y-2 text-xs">
-                <p className="font-extrabold text-[#5c3e16] uppercase tracking-widest block mb-1">🏫 學校 & 日常生活怎麼用：</p>
-                {item.examples.map((ex, exIdx) => {
-                  return (
-                    <div key={exIdx} className="bg-slate-50 p-2.5 rounded-xl text-[#4a453e] font-semibold leading-relaxed border border-slate-200">
-                      💡 {ex}
-                    </div>
-                  );
-                })}
+                <p className="text-xs md:text-sm leading-relaxed text-slate-700 font-bold bg-[#fcf9f2] p-3.5 rounded-xl border border-amber-150/50">
+                  {item.context}
+                </p>
+
+                {/* Examples section */}
+                <div className="space-y-2 text-xs pt-1">
+                  <p className="font-extrabold text-[#5c3e16] uppercase tracking-widest block mb-1">🏫 學校 & 日常生活怎麼用：</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {item.examples.map((ex, exIdx) => {
+                      return (
+                        <div key={exIdx} className="bg-slate-50 p-2.5 rounded-xl text-[#4a453e] font-semibold leading-relaxed border border-slate-200">
+                          💡 {ex}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           );

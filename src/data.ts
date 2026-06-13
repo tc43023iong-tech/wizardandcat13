@@ -491,37 +491,37 @@ export const USEFUL_SENTENCES = [
 
 export const USEFUL_SENTENCES_QUIZ: QuizQuestion[] = [
   {
-    question: "You see a big group of animal friends laughing and talking in the school hallway. You want to walk over and ask what is happening. You say:",
+    question: "You see (看見) a big group of animal friends laughing (大笑) and talking (說話) in the school hallway (走廊). You want to ask what is happening (發生什麼事). You say (說):",
     options: ["I need your help.", "What's going on?", "Come with me!"],
     answer: "What's going on?",
     image: "/assets/images/quiz_img_1_1781343661578.jpg"
   },
   {
-    question: "You are sitting at your little desk and cannot solve a very difficult math question on your worksheet. You want to ask for assistance. You say:",
+    question: "You are sitting at your desk (書桌) and cannot solve (解答) a very difficult (非常困難的) math question (數學題). You want to ask for help (尋求幫忙). You say (說):",
     options: ["What's going on?", "Come with me?", "I need your help."],
     answer: "I need your help.",
     image: "/assets/images/quiz_img_2_1781343680990.jpg"
   },
   {
-    question: "You just found a beautiful glowing butterfly in the garden! You want your best friend to follow you to see it. You say:",
+    question: "You found (發現) a beautiful (美麗的) butterfly (蝴蝶) in the garden (花園)! You want your best friend to follow (跟隨) you to see it. You say (說):",
     options: ["Come with me!", "I need your help.", "What's going on?"],
     answer: "Come with me!",
     image: "/assets/images/quiz_img_3_1781343695777.jpg"
   },
   {
-    question: "Your schoolbag is too heavy and you cannot carry it by yourself. You want your teacher or friend to assist you. You say:",
+    question: "Your schoolbag (書包) is too heavy (太重了) and you cannot carry (提) it by yourself (自己). You want a helper (幫手) to assist (協助) you. You say (說):",
     options: ["Come with me!", "I need your help.", "What's going on?"],
     answer: "I need your help.",
     image: "/assets/images/quiz_img_4_1781343708494.jpg"
   },
   {
-    question: "You walk into your empty classroom and see colorful balloons, streamers, and a giant birthday cake on the desk, but nobody is there. You ask:",
+    question: "You walk into the classroom (教室) and see colorful balloons (氣球), streamers (彩帶), and a big birthday cake (生日蛋糕) on the desk, but nobody is there (沒有人在). You ask (問):",
     options: ["I need your help.", "What's going on?", "Come with me!"],
     answer: "What's going on?",
     image: "/assets/images/quiz_img_5_1781343720626.jpg"
   },
   {
-    question: "You have a super cool new red toy car and you want your puppy classmate to come over and play with you. You tell them:",
+    question: "You have a super cool (超酷的) new red toy car (玩具車) and you want your classmate (同學) to come and play (一起玩) with you. You tell them (告訴他們):",
     options: ["What's going on?", "I need your help.", "Come with me!"],
     answer: "Come with me!",
     image: "/assets/images/quiz_img_6_1781343734928.jpg"
