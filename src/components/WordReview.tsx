@@ -35,14 +35,14 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_ballroom",
     order: 1,
-    image: "/assets/images/seq_ballroom_new_1781360569407.jpg",
+    image: "/assets/images/seq_ballroom_detail_1781361127402.jpg",
     narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
     hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
   },
   {
     id: "seq_dirk",
     order: 2,
-    image: "/assets/images/seq_dirk_new_1781360514805.jpg",
+    image: "/assets/images/seq_dirk_detail_1781361142112.jpg",
     narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
     hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
   },

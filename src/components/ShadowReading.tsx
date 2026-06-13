@@ -112,7 +112,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                      <img
-                      src="/assets/images/seq_ballroom_new_1781360569407.jpg"
+                      src="/assets/images/seq_ballroom_detail_1781361127402.jpg"
                       alt="Tom looking into Royal Ballroom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -147,7 +147,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/cat_secret_whispering_1781315648228.jpg"
+                      src="/assets/images/cat_secret_new_1781361373605.jpg"
                       alt="Cat whispering a birthday party secret"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -182,7 +182,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                      <img
-                      src="/assets/images/seq_dirk_new_1781360514805.jpg"
+                      src="/assets/images/seq_dirk_detail_1781361142112.jpg"
                       alt="Dirk commands Tom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
