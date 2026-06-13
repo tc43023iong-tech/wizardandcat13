@@ -14,7 +14,8 @@ import { playCorrectSound, playIncorrectSound, playMatchSound, playLevelUpSound,
 const WORDS_TO_EXCLUDE = [
   'streamers', 'appeared', 'blew', 'wriggled', 'majesty', 
   'hung', 'was still', 'repeated', 'bowed', 'pulled out', 
-  'peeked', 'heard', 'hurried', 'ceiling', 'at once'
+  'peeked', 'heard', 'hurried', 'ceiling', 'at once',
+  'thought', 'handkerchief', 'throne', 'snapped', 'hiss'
 ];
 
 const FILTERED_VOCABULARY_DATA = VOCABULARY_DATA.filter(
@@ -34,14 +35,14 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_ballroom",
     order: 1,
-    image: "/assets/images/seq_ballroom_1781343586736.jpg",
+    image: "/assets/images/seq_ballroom_cartoon.jpg",
     narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
     hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
   },
   {
     id: "seq_dirk",
     order: 2,
-    image: "/assets/images/seq_dirk_1781343624696.jpg",
+    image: "/assets/images/seq_dirk_cartoon.jpg",
     narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
     hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
   },

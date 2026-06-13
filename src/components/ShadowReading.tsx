@@ -111,8 +111,8 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
-                      src="/assets/images/seq_ballroom_1781343586736.jpg"
+                     <img
+                      src="/assets/images/seq_ballroom_cartoon.jpg"
                       alt="Tom looking into Royal Ballroom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -181,8 +181,8 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
-                      src="/assets/images/seq_dirk_1781343624696.jpg"
+                     <img
+                      src="/assets/images/seq_dirk_cartoon.jpg"
                       alt="Dirk commands Tom"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
