@@ -5,8 +5,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Mic, Sparkles, Star, Smile, Trophy } from 'lucide-react';
-import { playTTS, playCorrectSound, playLevelUpSound } from './AudioEngine';
+import { Mic, Sparkles, Star, Smile, Trophy } from 'lucide-react';
+import { playCorrectSound, playLevelUpSound } from './AudioEngine';
 
 export default function ShadowReading() {
   const [activeShadowTab, setActiveShadowTab] = useState<'dialogue' | 'action'>('dialogue');
@@ -27,7 +27,7 @@ export default function ShadowReading() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto animate-fade-in mb-12">
+    <div className="space-y-8 animate-fade-in mb-12">
       {/* Intro Header */}
       <div className="p-6 md:p-8 rounded-3xl bg-[#efefea]/80 border border-slate-300/40 flex flex-col md:flex-row items-center gap-6">
         <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm animate-pulse">
@@ -132,13 +132,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：語氣要上揚，表示出非常好奇、想要探查究竟的感覺！
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("What's going on? Tom asked.")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
 
@@ -167,13 +160,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：像在跟同伴說悄悄話，一字字驚喜而溫柔地說！
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("There's a birthday party tomorrow, Cat said.")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
 
@@ -202,13 +188,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：聲音可以粗重有力，乾脆、直接命令！
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("Come with me! Dirk said.")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -248,13 +227,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，神氣活現！🤧
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("Ah-choo! The queen sneezed.")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
 
@@ -283,13 +255,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：語氣要誠懇和重讀 need your help！
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("Tom, I need your help, she said.")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
 
@@ -318,13 +283,6 @@ export default function ShadowReading() {
                         💡 影子朗讀提示：先拔高問句 A dog?，接著用力發出生氣貓咪抓狂的 Hiss！
                       </p>
                     </div>
-                    <button
-                      onClick={() => playTTS("A dog? Tom repeated. Hiss!")}
-                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                      title="聽到發音"
-                    >
-                      <Volume2 className="w-5 h-5 pointer-events-none" />
-                    </button>
                   </div>
                 </div>
               </div>

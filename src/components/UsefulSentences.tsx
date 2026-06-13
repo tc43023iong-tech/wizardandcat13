@@ -9,6 +9,14 @@ import { Volume2, Sparkles, AlertCircle, Check, ArrowRight } from 'lucide-react'
 import { USEFUL_SENTENCES, USEFUL_SENTENCES_QUIZ } from '../data';
 import { playCorrectSound, playIncorrectSound, playTTS } from './AudioEngine';
 
+function splitQuestionIntoLines(text: string): string[] {
+  const formatted = text
+    .replace(/\.\s+/g, ".\n")
+    .replace(/!\s+/g, "!\n")
+    .replace(/\?\s+/g, "?\n");
+  return formatted.split("\n").map(s => s.trim()).filter(Boolean);
+}
+
 export default function UsefulSentences() {
   const [activeSentenceId, setActiveSentenceId] = useState<number | null>(null);
   
@@ -193,10 +201,14 @@ export default function UsefulSentences() {
           <div className="flex-1 space-y-6">
             <div className="p-6 rounded-2.5xl bg-[#fbf9f4] border-2 border-amber-150 relative">
               <Sparkles className="w-10 h-10 text-amber-400/20 absolute right-4 bottom-4 animate-pulse pointer-events-none" />
-              <h4 className="text-base md:text-lg font-bold text-slate-800 leading-relaxed">
-                <span className="text-amber-700 font-extrabold mr-1">Question {quizIndex + 1}:</span>
-                <span className="text-[#2b2723] font-black">{currentQuiz.question}</span>
-              </h4>
+              <div className="text-base md:text-lg font-bold text-slate-800 leading-relaxed space-y-2">
+                <span className="text-amber-700 font-extrabold block text-xs uppercase tracking-wider mb-1">Question {quizIndex + 1}:</span>
+                {splitQuestionIntoLines(currentQuiz.question).map((line, idx) => (
+                  <p key={idx} className="text-[#2b2723] font-black">
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
 
             {/* Options */}
