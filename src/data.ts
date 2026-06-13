@@ -335,6 +335,26 @@ export const VOCABULARY_DATA: WordDetail[] = [
     explanation: "Having a thin edge or point that could hurt slightly. (戳到或碰觸時，會感覺刺刺痛痛或是很銳利的！)",
     en_example: "Watch out for the sharp needle.",
     zh_example: "小心那根尖銳的針。"
+  },
+  {
+    id: "cook",
+    word: "cook",
+    ipa: "/kʊk/",
+    zh: "廚師",
+    emoji: "🧑‍🍳",
+    explanation: "A person who prepares and cooks delicious food in the kitchen. (在大廚房裡負責烹飪與調配美味佳餚美味的專業廚師！🍳🍕)",
+    en_example: "I heard Cook talking about it.",
+    zh_example: "我聽到廚師正在談論這件事。"
+  },
+  {
+    id: "whose",
+    word: "whose",
+    ipa: "/huːz/",
+    zh: "誰的",
+    emoji: "❓",
+    explanation: "Used to ask which person owns or has something. (用來發問某個東西或是生日是屬於「誰的」！🔍)",
+    en_example: "Whose birthday is it?",
+    zh_example: "那是誰的生日呢？"
   }
 ];
 
@@ -346,12 +366,12 @@ export const FULL_STORY_PARAGRAPHS = [
   },
   {
     id: 2,
-    en: "Cat {peeked} out of Tom's {pocket}. \"There's a birthday party {tomorrow},\" she said. \"I {heard} Cook talking about it.\"",
+    en: "Cat {peeked} out of Tom's {pocket}. \"There's a birthday party {tomorrow},\" she said. \"I {heard} {Cook} talking about it.\"",
     zh: "貓咪從湯姆的口袋裡探出頭來偷看。「明天有一場生日派對，」她說，「我聽到廚師正在談論這件事。」"
   },
   {
     id: 3,
-    en: "\"Whose birthday is it?\" Tom asked. \"Prince Eric's,\" Cat said.",
+    en: "\"{Whose} birthday is it?\" Tom asked. \"Prince Eric's,\" Cat said.",
     zh: "「那是誰的生日呢？」湯姆問。「艾瑞克王子的，」貓咪說。"
   },
   {

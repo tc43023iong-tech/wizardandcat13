@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Languages, HelpCircle, Check, X, Sparkles, Smile, Trophy } from 'lucide-react';
 import { WordDetail } from '../types';
 import { VOCABULARY_DATA, FULL_STORY_PARAGRAPHS, LITTLE_FOX_QUESTIONS } from '../data';
-import { playTTS, playCorrectSound, playLevelUpSound } from './AudioEngine';
+import { playTTS, playCorrectSound, playIncorrectSound, playLevelUpSound } from './AudioEngine';
 import WordPopup from './WordPopup';
 
 // Mapping of questions to paragraphs (0-indexed referring to LITTLE_FOX_QUESTIONS array)
@@ -149,6 +149,8 @@ export default function StorySection() {
       if (Object.keys(updated).length === LITTLE_FOX_QUESTIONS.length) {
         setTimeout(() => playLevelUpSound(), 550);
       }
+    } else {
+      playIncorrectSound();
     }
   };
 

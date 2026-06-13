@@ -23,28 +23,28 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_ballroom",
     order: 1,
-    image: "/assets/images/seq_ballroom_1781343586736.jpg",
+    image: "/assets/images/seq_ballroom_cartoon.jpg",
     narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
     hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
   },
   {
     id: "seq_dirk",
     order: 2,
-    image: "/assets/images/seq_dirk_1781343624696.jpg",
+    image: "/assets/images/seq_dirk_cartoon.jpg",
     narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
     hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
   },
   {
     id: "seq_queen",
     order: 3,
-    image: "/assets/images/seq_queen_1781343638059.jpg",
+    image: "/assets/images/seq_queen_cartoon.jpg",
     narrative: "The queen sneezed 'Ah-choo!' and told Tom about a special gift.",
     hint: "女王哈啾：女王感冒打了好大的噴嚏，告訴湯姆她需要生日禮物幫忙。"
   },
   {
     id: "seq_pocket",
     order: 4,
-    image: "/assets/images/seq_pocket_1781343649071.jpg",
+    image: "/assets/images/seq_pocket_cartoon.jpg",
     narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
     hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
   }

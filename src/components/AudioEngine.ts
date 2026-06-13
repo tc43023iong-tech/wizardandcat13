@@ -20,25 +20,26 @@ export function playCorrectSound() {
     const ctx = getAudioContext();
     const now = ctx.currentTime;
     
-    // Create oscillator and gain node
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    
-    osc.type = 'triangle';
-    // Friendly arpeggio
-    osc.frequency.setValueAtTime(523.25, now); // C5
-    osc.frequency.setValueAtTime(659.25, now + 0.08, ); // E5
-    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
-    osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
-    
-    gain.gain.setValueAtTime(0.15, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-    
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    
-    osc.start(now);
-    osc.stop(now + 0.4);
+    // Cozy musical chime sequence using sweet triangle and sine waves
+    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Bright ascending arpeggio)
+    notes.forEach((freq, index) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now + index * 0.08);
+      
+      // Beautiful fast decay for clockwork bells
+      gain.gain.setValueAtTime(0, now + index * 0.08);
+      gain.gain.linearRampToValueAtTime(0.12, now + index * 0.08 + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + index * 0.08 + 0.25);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start(now + index * 0.08);
+      osc.stop(now + index * 0.08 + 0.28);
+    });
   } catch (e) {
     console.warn("Audio Context blocked or not supported:", e);
   }
@@ -49,22 +50,41 @@ export function playIncorrectSound() {
     const ctx = getAudioContext();
     const now = ctx.currentTime;
     
+    // Play a friendly cartoonish "wah-wah" slide using a soft triangle wave
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     
-    osc.type = 'sawtooth';
-    // Low sliding pitch (boing-buzz effect)
-    osc.frequency.setValueAtTime(180, now);
-    osc.frequency.exponentialRampToValueAtTime(80, now + 0.35);
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(320, now);
+    osc.frequency.setValueAtTime(320, now + 0.08);
+    osc.frequency.exponentialRampToValueAtTime(140, now + 0.32);
     
-    gain.gain.setValueAtTime(0.15, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
     
     osc.connect(gain);
     gain.connect(ctx.destination);
     
     osc.start(now);
     osc.stop(now + 0.35);
+    
+    // Delicate soft secondary bounce for "bloop-bloop" effect
+    const bounceOsc = ctx.createOscillator();
+    const bounceGain = ctx.createGain();
+    
+    bounceOsc.type = 'sine';
+    bounceOsc.frequency.setValueAtTime(180, now + 0.12);
+    bounceOsc.frequency.exponentialRampToValueAtTime(120, now + 0.35);
+    
+    bounceGain.gain.setValueAtTime(0, now + 0.12);
+    bounceGain.gain.linearRampToValueAtTime(0.08, now + 0.15);
+    bounceGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+    
+    bounceOsc.connect(bounceGain);
+    bounceGain.connect(ctx.destination);
+    
+    bounceOsc.start(now + 0.12);
+    bounceOsc.stop(now + 0.35);
   } catch (e) {
     console.warn("Audio Context blocked or not supported:", e);
   }
