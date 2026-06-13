@@ -625,15 +625,15 @@ export const WORKSHEET_DATA = {
     },
     {
       id: 2,
-      question: "Cat is happy to hear (聽說) about the dog.",
-      answer: "False",
-      emoji: "😾"
+      question: "The party is in the Royal Ballroom (皇家宴會廳).",
+      answer: "True",
+      emoji: "🏰"
     }
   ],
   shortAnswer: {
-    question: "The Queen wants to get (獲得) a dog. Does Cat like dogs? (Yes, it does. or No, it does not.)",
-    options: ["Yes, it does.", "No, it does not."],
-    answer: "No, it does not.",
-    emoji: "🐈🐕"
+    question: "What does the Queen want to give Prince Eric as a birthday gift (生日禮物)?",
+    options: ["A cat (一隻貓)", "A dog (一隻狗)"],
+    answer: "A dog (一隻狗)",
+    emoji: "🎁🐕"
   }
 };
