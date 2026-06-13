@@ -165,37 +165,7 @@ export default function StorySection() {
   const progressPercent = (answeredCount / totalQuestions) * 100;
 
   return (
-    <div className="space-y-12">
-      {/* Introduction Banner */}
-      <div className="p-6 md:p-8 rounded-3xl bg-[#efefea] border border-slate-300/40 flex flex-col md:flex-row items-center gap-6 shadow-sm">
-        <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm animate-bounce">
-          📖
-        </div>
-        <div className="flex-1">
-          <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
-            Wizard and Cat 13: Prince Eric&#39;s Birthday
-          </h2>
-        </div>
-      </div>
-
-      {/* Progress Bar Widget */}
-      <div className="p-5 bg-white rounded-2.5xl border border-slate-300/30 shadow-sm space-y-2">
-        <div className="flex justify-between items-center text-sm font-extrabold text-[#5c3e16]">
-          <span className="flex items-center gap-1.5 text-amber-700">
-            👑 Q & A 挑戰學習進度 (Learning Progress):
-          </span>
-          <span className="bg-amber-100 text-amber-900 px-3 py-0.5 rounded-full text-xs">
-            {answeredCount} / {totalQuestions} 已答對
-          </span>
-        </div>
-        <div className="w-full bg-slate-100 rounded-full h-4 overflow-hidden p-0.5 border border-slate-200">
-          <div 
-            className="bg-gradient-to-r from-amber-400 to-amber-500 h-full rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-      </div>
-
+    <div className="space-y-8 max-w-4xl mx-auto">
       {/* Main Story Book Card */}
       <div className="bg-white rounded-3xl border-4 border-amber-200 shadow-xl overflow-hidden animate-fade-in">
         {/* Story Board Title */}

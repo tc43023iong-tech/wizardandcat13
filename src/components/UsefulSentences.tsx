@@ -96,7 +96,7 @@ export default function UsefulSentences() {
               
               {/* Illustration Frame */}
               {item.image && (
-                <div className="w-full md:w-56 shrink-0 aspect-video md:aspect-square overflow-hidden rounded-2.5xl border-2 border-amber-100 bg-amber-50 shadow-sm relative">
+                <div className="w-full md:w-72 lg:w-80 shrink-0 aspect-video overflow-hidden rounded-2.5xl border-2 border-amber-100 bg-amber-50 shadow-sm relative">
                   <img
                     src={item.image}
                     alt={item.sentence}
