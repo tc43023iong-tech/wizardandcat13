@@ -126,7 +126,7 @@ export default function ShadowReading() {
                         Tom (好奇發問) <Smile className="w-3.5 h-3.5 text-amber-600" />
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide">
-                        &quot;What&apos;s going on?&quot; Tom asked.
+                        <span className="text-indigo-600">&quot;What&apos;s going on?&quot;</span> <span className="text-slate-500 font-normal">Tom asked.</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：語氣要上揚，表示出非常好奇、想要探查究竟的感覺！
@@ -147,7 +147,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/cat_secret_whispering_1781315648228.jpg"
+                      src="/assets/images/seq_ballroom_1781343586736.jpg"
                       alt="Cat whispering a birthday party secret"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -161,7 +161,7 @@ export default function ShadowReading() {
                         Cat (好意分享秘密)
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide">
-                        &quot;There&apos;s a birthday party tomorrow,&quot; Cat said.
+                        <span className="text-emerald-600">&quot;There&apos;s a birthday party tomorrow,&quot;</span> <span className="text-slate-500 font-normal">Cat said.</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：像在跟同伴說悄悄話，一字字驚喜而溫柔地說！
@@ -196,7 +196,7 @@ export default function ShadowReading() {
                         Dirk (粗魯地命令人)
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide">
-                        &quot;Come with me!&quot; Dirk said.
+                        <span className="text-rose-600">&quot;Come with me!&quot;</span> <span className="text-slate-500 font-normal">Dirk said.</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：聲音可以粗重有力，乾脆、直接命令！
@@ -242,7 +242,7 @@ export default function ShadowReading() {
                         The Queen (大哈啾與噴嚏)
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide font-mono">
-                        &quot;Ah-choo!&quot; The queen sneezed.
+                        <span className="text-amber-600 animate-pulse">&quot;Ah-choo!&quot;</span> <span className="text-slate-500 font-normal font-sans">The queen sneezed.</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，神氣活現！🤧
@@ -277,7 +277,7 @@ export default function ShadowReading() {
                         The Queen (誠懇地尋求拯救)
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide">
-                        &quot;Tom, I need your help,&quot; she said.
+                        <span className="text-indigo-600">&quot;Tom, I need your help,&quot;</span> <span className="text-slate-500 font-normal">she said.</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：語氣要誠懇和重讀 need your help！
@@ -312,7 +312,7 @@ export default function ShadowReading() {
                         Tom &amp; Cat (驚叫與貓咪狂怒嘶喊)
                       </span>
                       <p className="text-xl font-black text-slate-800 tracking-wide">
-                        &quot;A dog?&quot; Tom repeated. Hiss!
+                        <span className="text-indigo-600">&quot;A dog?&quot;</span> <span className="text-slate-500 font-normal">Tom repeated.</span> <span className="text-rose-650 text-red-500 font-extrabold italic animate-pulse">Hiss!</span>
                       </p>
                       <p className="text-xs text-slate-600 font-medium">
                         💡 影子朗讀提示：先拔高問句 A dog?，接著用力發出生氣貓咪抓狂的 Hiss！
