@@ -327,26 +327,29 @@ export default function WordReview() {
           </button>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Table/List Headers (Visible only on medium/larger screens) */}
+        <div className="hidden md:grid grid-cols-12 gap-6 px-6 py-2 bg-[#fcfbf7] border border-amber-100 rounded-xl text-xs font-black text-amber-900 uppercase tracking-widest text-center">
+          <div className="col-span-4 lg:col-span-4 text-left">🎨 故事插圖 Story Scene Image</div>
+          <div className="col-span-5 lg:col-span-5 text-left">📝 故事對白 Narrative Details</div>
+          <div className="col-span-3 lg:col-span-3">🔢 故事步驟選擇 Select Step</div>
+        </div>
+
+        {/* 4 Rows List */}
+        <div className="flex flex-col gap-5">
           {seqCards.map((card) => {
             const currentStep = seqAssignments[card.id];
 
             return (
               <div
                 key={card.id}
-                className="bg-[#FCFCF9] border-2 border-amber-150/60 rounded-2.5xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4 relative overflow-hidden"
+                className="bg-[#FCFCF9] border-2 border-amber-150/60 rounded-3xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col md:grid md:grid-cols-12 gap-6 items-center relative overflow-hidden"
               >
-                {/* Active step indicator badge */}
-                {currentStep !== null && (
-                  <div className="absolute top-2 right-2 bg-[#e07a5f] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md animate-bounce">
-                    {currentStep}
-                  </div>
-                )}
+                {/* Visual Accent for Step status */}
+                <div className="absolute top-0 left-0 w-2 h-full bg-amber-200" />
 
-                <div className="space-y-3">
-                  {/* Aspect ratio frame for image */}
-                  <div className="aspect-video sm:aspect-square overflow-hidden rounded-2xl bg-slate-50 border border-slate-250/20">
+                {/* Column 1: Image (列一：圖片) */}
+                <div className="col-span-12 md:col-span-4 lg:col-span-4 w-full">
+                  <div className="aspect-video w-full overflow-hidden rounded-2xl bg-slate-50 border border-slate-200 shadow-xs relative">
                     <img
                       src={card.image}
                       alt="Story scene picture"
@@ -354,16 +357,32 @@ export default function WordReview() {
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  <p className="text-xs font-bold text-slate-755 leading-relaxed bg-white p-2.5 rounded-xl border border-dashed border-slate-200 min-h-[64px]">
+                </div>
+
+                {/* Column 2: Text (列二：文字) */}
+                <div className="col-span-12 md:col-span-5 lg:col-span-5 w-full">
+                  <p className="text-sm font-bold text-slate-800 leading-relaxed bg-white p-4 rounded-2xl border border-dashed border-slate-200 shadow-2xs">
                     {card.narrative}
                   </p>
                 </div>
 
-                {/* Step Selection Controls */}
-                <div className="space-y-2 pt-2 border-t border-amber-100/30">
-                  <span className="text-[10px] font-black text-amber-800/80 block text-center uppercase tracking-wider">
-                    Select Step
-                  </span>
+                {/* Column 3: Select Step (列三：Select Step) */}
+                <div className="col-span-12 md:col-span-3 lg:col-span-3 w-full flex flex-col gap-3 justify-center bg-amber-50/10 p-4 rounded-2xl border border-amber-150/40">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black text-amber-800 uppercase tracking-widest">
+                      Assign Order
+                    </span>
+                    {currentStep !== null ? (
+                      <span className="bg-[#e07a5f] text-white font-black text-xs px-2.5 py-1 rounded-full animate-pulse shadow-xs">
+                        Step {currentStep}
+                      </span>
+                    ) : (
+                      <span className="bg-slate-100 text-slate-400 font-extrabold text-[10px] px-2.5 py-1 rounded-full border border-slate-200">
+                        Pending
+                      </span>
+                    )}
+                  </div>
+
                   <div className="grid grid-cols-4 gap-1.5">
                     {[1, 2, 3, 4].map((stepNum) => {
                       const isSelected = currentStep === stepNum;
@@ -371,7 +390,7 @@ export default function WordReview() {
                         <button
                           key={stepNum}
                           onClick={() => handleAssignStep(card.id, stepNum)}
-                          className={`py-2 text-xs font-black rounded-lg border-2 transition-all cursor-pointer ${
+                          className={`py-2.5 text-xs font-black rounded-xl border-2 transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-[#e07a5f] border-[#ca6347] text-white shadow-sm scale-110'
                               : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300'
