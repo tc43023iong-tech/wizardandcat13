@@ -56,7 +56,7 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_pocket",
     order: 4,
-    image: "/assets/images/seq_pocket_scratching_1781359040265.jpg",
+    image: "/assets/images/seq_pocket_1781343649071.jpg",
     narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
     hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
   }
