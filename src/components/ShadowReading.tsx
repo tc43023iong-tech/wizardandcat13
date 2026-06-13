@@ -108,72 +108,108 @@ export default function ShadowReading() {
               {/* Dialogue Cards Stack */}
               <div className="space-y-4">
                 {/* 1. Tom */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0">🧙‍♂️</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-amber-700 flex items-center gap-1">
-                      Tom (好奇發問) <Smile className="w-3.5 h-3.5 text-amber-600" />
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide">
-                      &quot;What&apos;s going on?&quot; Tom asked.
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：語氣要上揚，表示出非常好奇、想要探查究竟的感覺！
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/quiz_img_1_1781279086209.jpg"
+                      alt="Tom asking what's going on"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("What's going on? Tom asked.")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0">🧙‍♂️</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-amber-700 flex items-center gap-1">
+                        Tom (好奇發問) <Smile className="w-3.5 h-3.5 text-amber-600" />
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide">
+                        &quot;What&apos;s going on?&quot; Tom asked.
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：語氣要上揚，表示出非常好奇、想要探查究竟的感覺！
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("What's going on? Tom asked.")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* 2. Cat */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0">🐱</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-teal-750">
-                      Cat (好意分享秘密)
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide">
-                      &quot;There&apos;s a birthday party tomorrow,&quot; Cat said.
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：像在跟同伴說悄悄話，一字字驚喜而溫柔地說！
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/seq_ballroom_1781280139847.jpg"
+                      alt="Birthday party setup"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("There's a birthday party tomorrow, Cat said.")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0">🐱</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-teal-750">
+                        Cat (好意分享秘密)
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide">
+                        &quot;There&apos;s a birthday party tomorrow,&quot; Cat said.
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：像在跟同伴說悄悄話，一字字驚喜而溫柔地說！
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("There's a birthday party tomorrow, Cat said.")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* 3. Dirk */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0">😠</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-red-700">
-                      Dirk (粗魯地命令人)
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide">
-                      &quot;Come with me!&quot; Dirk said.
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：聲音可以粗重有力，乾脆、直接命令！
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/seq_dirk_1781280167527.jpg"
+                      alt="Dirk commands Tom"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("Come with me! Dirk said.")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0">😠</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-red-700">
+                        Dirk (粗魯地命令人)
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide">
+                        &quot;Come with me!&quot; Dirk said.
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：聲音可以粗重有力，乾脆、直接命令！
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("Come with me! Dirk said.")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -188,72 +224,108 @@ export default function ShadowReading() {
               {/* Action Cards Stack */}
               <div className="space-y-4">
                 {/* 1. Queen Sneezing */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0">🤧</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-amber-800">
-                      The Queen (大哈啾與噴嚏)
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide font-mono">
-                      &quot;Ah-choo!&quot; The queen sneezed.
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，神氣活現！🤧
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/seq_queen_1781280182107.jpg"
+                      alt="The Queen sneezing Ah-choo"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("Ah-choo! The queen sneezed.")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0">🤧</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-amber-800">
+                        The Queen (大哈啾與噴嚏)
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide font-mono">
+                        &quot;Ah-choo!&quot; The queen sneezed.
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：大膽做出打噴嚏「哈——啾！」的動感，神氣活現！🤧
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("Ah-choo! The queen sneezed.")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* 2. Queen Help request */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0 font-sans">👑</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-teal-700">
-                      The Queen (誠懇地尋求拯救)
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide">
-                      &quot;Tom, I need your help,&quot; she said.
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：語氣要誠懇和重讀 need your help！
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/quiz_img_2_1781279110797.jpg"
+                      alt="The Queen asking Tom for help"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("Tom, I need your help, she said.")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0 font-sans">👑</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-teal-700">
+                        The Queen (誠懇地尋求拯救)
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide">
+                        &quot;Tom, I need your help,&quot; she said.
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：語氣要誠懇和重讀 need your help！
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("Tom, I need your help, she said.")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* 3. Tom Shocked and Cat Anger combined */}
-                <div className="flex items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
-                  <span className="text-2xl shrink-0">😾</span>
-                  <div className="flex-1 space-y-1">
-                    <span className="text-xs font-bold text-red-700">
-                      Tom &amp; Cat (驚叫與貓咪狂怒嘶喊)
-                    </span>
-                    <p className="text-xl font-black text-slate-800 tracking-wide">
-                      &quot;A dog?&quot; Tom repeated. Hiss!
-                    </p>
-                    <p className="text-xs text-slate-600 font-medium">
-                      💡 影子朗讀提示：先拔高問句 A dog?，接著用力發出生氣貓咪抓狂的 Hiss！
-                    </p>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
+                  {/* Card Illustration */}
+                  <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
+                    <img
+                      src="/assets/images/seq_pocket_1781280153755.jpg"
+                      alt="Cat scratches inside Tom's pocket"
+                      className="w-full h-full object-cover pointer-events-none"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
-                  <button
-                    onClick={() => playTTS("A dog? Tom repeated. Hiss!")}
-                    className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
-                    title="聽到發音"
-                  >
-                    <Volume2 className="w-5 h-5 pointer-events-none" />
-                  </button>
+
+                  <div className="flex-1 flex gap-4 min-w-0">
+                    <span className="text-2xl shrink-0">😾</span>
+                    <div className="flex-1 space-y-1 min-w-0">
+                      <span className="text-xs font-bold text-red-700">
+                        Tom &amp; Cat (驚叫與貓咪狂怒嘶喊)
+                      </span>
+                      <p className="text-xl font-black text-slate-800 tracking-wide">
+                        &quot;A dog?&quot; Tom repeated. Hiss!
+                      </p>
+                      <p className="text-xs text-slate-600 font-medium">
+                        💡 影子朗讀提示：先拔高問句 A dog?，接著用力發出生氣貓咪抓狂的 Hiss！
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => playTTS("A dog? Tom repeated. Hiss!")}
+                      className="p-3 rounded-xl bg-amber-100 hover:bg-amber-150 text-[#5c3e16] transition-colors cursor-pointer self-center border border-amber-200"
+                      title="聽到發音"
+                    >
+                      <Volume2 className="w-5 h-5 pointer-events-none" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
