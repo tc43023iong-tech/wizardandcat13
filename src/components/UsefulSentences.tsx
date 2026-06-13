@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Volume2, Sparkles, AlertCircle, Check, ArrowRight } from 'lucide-react';
 import { USEFUL_SENTENCES, USEFUL_SENTENCES_QUIZ } from '../data';
 import { playCorrectSound, playIncorrectSound, playTTS } from './AudioEngine';
+import { ImageWithFallback } from './ImageWithFallback';
 
 export default function UsefulSentences() {
   const [activeSentenceId, setActiveSentenceId] = useState<number | null>(null);
@@ -110,7 +111,7 @@ export default function UsefulSentences() {
               {/* Illustration Frame */}
               {item.image && (
                 <div className="mb-4 aspect-video overflow-hidden rounded-2xl border-2 border-amber-100 bg-amber-50 shadow-xs relative">
-                  <img
+                  <ImageWithFallback
                     src={item.image}
                     alt={item.sentence}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 pointer-events-none"
@@ -173,7 +174,7 @@ export default function UsefulSentences() {
           {currentQuiz.image && (
             <div className="w-full lg:w-[320px] shrink-0 bg-white p-3 rounded-2.5xl border-3 border-amber-150 shadow-md">
               <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-50 border border-slate-200">
-                <img
+                <ImageWithFallback
                   src={currentQuiz.image}
                   alt="Banana picture book style illustration"
                   className="w-full h-full object-cover"

@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Volume2, Mic, Sparkles, Star, Smile, Trophy } from 'lucide-react';
 import { playTTS, playCorrectSound, playLevelUpSound } from './AudioEngine';
+import { ImageWithFallback } from './ImageWithFallback';
 
 export default function ShadowReading() {
   const [activeShadowTab, setActiveShadowTab] = useState<'dialogue' | 'action'>('dialogue');
@@ -111,7 +112,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/seq_ballroom_1781280139847.jpg"
                       alt="Tom looking into Royal Ballroom"
                       className="w-full h-full object-cover pointer-events-none"
@@ -146,7 +147,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/cat_secret_whispering_1781315648228.jpg"
                       alt="Cat whispering a birthday party secret"
                       className="w-full h-full object-cover pointer-events-none"
@@ -181,7 +182,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/seq_dirk_1781280167527.jpg"
                       alt="Dirk commands Tom"
                       className="w-full h-full object-cover pointer-events-none"
@@ -227,7 +228,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/seq_queen_1781280182107.jpg"
                       alt="The Queen sneezing Ah-choo"
                       className="w-full h-full object-cover pointer-events-none"
@@ -262,7 +263,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/seq_queen_1781280182107.jpg"
                       alt="The Queen asking Tom for help"
                       className="w-full h-full object-cover pointer-events-none"
@@ -297,7 +298,7 @@ export default function ShadowReading() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 bg-white p-4 rounded-2xl border border-amber-100 relative hover:border-amber-300 transition-all shadow-xs">
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
-                    <img
+                    <ImageWithFallback
                       src="/assets/images/seq_pocket_1781280153755.jpg"
                       alt="Cat scratches inside Tom's pocket"
                       className="w-full h-full object-cover pointer-events-none"
