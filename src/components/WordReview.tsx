@@ -10,7 +10,6 @@ import { WordDetail } from '../types';
 import { VOCABULARY_DATA } from '../data';
 import { playCorrectSound, playIncorrectSound, playMatchSound, playLevelUpSound, playTTS } from './AudioEngine';
 import WordPopup from './WordPopup';
-import { ImageWithFallback } from './ImageWithFallback';
 
 interface CardItem {
   id: string; // "word_id-en" or "word_id-zh"
@@ -336,7 +335,7 @@ export default function WordReview() {
                 <div className="space-y-3">
                   {/* Aspect ratio frame for image */}
                   <div className="aspect-video sm:aspect-square overflow-hidden rounded-2xl bg-slate-50 border border-slate-250/20">
-                    <ImageWithFallback
+                    <img
                       src={card.image}
                       alt="Story scene picture"
                       className="w-full h-full object-cover"
