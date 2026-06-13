@@ -49,14 +49,14 @@ const SEQUENCING_CARDS = [
   {
     id: "seq_queen",
     order: 3,
-    image: "/assets/images/seq_queen_new_1781360534731.jpg",
+    image: "/assets/images/seq_queen_detail_1781360909538.jpg",
     narrative: "The queen sneezed 'Ah-choo!' and told Tom about a special gift.",
     hint: "女王哈啾：女王感冒打了好大的噴嚏，告訴湯姆她需要生日禮物幫忙。"
   },
   {
     id: "seq_pocket",
     order: 4,
-    image: "/assets/images/seq_pocket_new_1781360552102.jpg",
+    image: "/assets/images/seq_pocket_detail_1781360891214.jpg",
     narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
     hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
   }

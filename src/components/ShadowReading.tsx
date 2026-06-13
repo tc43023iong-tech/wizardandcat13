@@ -228,7 +228,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_queen_new_1781360534731.jpg"
+                      src="/assets/images/seq_queen_detail_1781360909538.jpg"
                       alt="The Queen sneezing Ah-choo"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -263,7 +263,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_queen_new_1781360534731.jpg"
+                      src="/assets/images/seq_queen_detail_1781360909538.jpg"
                       alt="The Queen asking Tom for help"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
@@ -298,7 +298,7 @@ export default function ShadowReading() {
                   {/* Card Illustration */}
                   <div className="w-full sm:w-28 h-28 sm:h-24 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-amber-50 shadow-xs relative">
                     <img
-                      src="/assets/images/seq_pocket_new_1781360552102.jpg"
+                      src="/assets/images/seq_pocket_detail_1781360891214.jpg"
                       alt="Cat scratches inside Tom's pocket"
                       className="w-full h-full object-cover pointer-events-none"
                       referrerPolicy="no-referrer"
