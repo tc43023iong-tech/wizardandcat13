@@ -411,14 +411,14 @@ export const LITTLE_FOX_QUESTIONS: QuizQuestion[] = [
     hint: "Hint: Cats are afraid of dogs! She made a very loud angry sound from the pocket! 😾"
   },
   {
-    question: "What did Tom feel in his pocket?",
+    question: "What did Tom feel in his pocket (口袋)?",
     zh_translation: "湯姆在口袋裡感覺到了什麼？",
     options: ["Cat's tail", "Cat's teeth", "Cat's claws"],
     answer: "Cat's claws",
     hint: "Hint: Ouch! Cat has sharp nails on her feet that hurt when she is angry! 🐾"
   },
   {
-    question: "Whose birthday party were the servants getting ready for?",
+    question: "Whose (誰的) birthday party were the servants getting ready for (為...做準備)?",
     zh_translation: "僕人們正在為誰的生日派對做準備？",
     options: ["the king's", "Prince Eric's", "the queen's"],
     answer: "Prince Eric's",
@@ -578,10 +578,10 @@ export const WORKSHEET_DATA = {
       question: "Why are there decorations (裝飾物) in the ballroom (宴會廳)?",
       options: [
         "(A) For a magic show (魔術表演).",
-        "(B) For Prince Eric's birthday party (生日派對).",
+        "(B) For Prince Eric's birthday party.",
         "(C) For Dirk's party."
       ],
-      answer: "(B) For Prince Eric's birthday party (生日派對).",
+      answer: "(B) For Prince Eric's birthday party.",
       emoji: "🎈"
     },
     {
@@ -590,28 +590,28 @@ export const WORKSHEET_DATA = {
       options: [
         "(A) She is sick (生病).",
         "(B) The room is cold (寒冷的).",
-        "(C) Cat (貓咪) is in Tom's pocket (口袋)."
+        "(C) Cat is in Tom's pocket (口袋)."
       ],
-      answer: "(C) Cat (貓咪) is in Tom's pocket (口袋).",
+      answer: "(C) Cat is in Tom's pocket (口袋).",
       emoji: "🤧"
     }
   ],
   trueFalse: [
     {
       id: 1,
-      question: "Prince Eric likes (喜愛) animals (動物).",
+      question: "Prince Eric likes animals.",
       answer: "True",
       emoji: "🐰"
     },
     {
       id: 2,
-      question: "Cat (貓咪) is happy (高興) to hear (聽說) about the dog (狗).",
+      question: "Cat is happy to hear (聽說) about the dog.",
       answer: "False",
       emoji: "😾"
     }
   ],
   shortAnswer: {
-    question: "The Queen wants to get (獲得) a dog (狗). Does Cat like dogs? (Yes, it does. or No, it does not.)",
+    question: "The Queen wants to get (獲得) a dog. Does Cat like dogs? (Yes, it does. or No, it does not.)",
     options: ["Yes, it does.", "No, it does not."],
     answer: "No, it does not.",
     emoji: "🐈🐕"
