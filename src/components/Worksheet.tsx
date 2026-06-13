@@ -118,10 +118,6 @@ export default function Worksheet() {
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
             Class Worksheet 課堂學習單
           </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed font-semibold">
-            恭喜你讀完了湯姆和貓咪的大冒險！讓我們來完成這份有趣、不帶任何分數壓力的數位學習單。
-            句子中比較難的單詞都附有括號中文說明，大膽地挑戰看看，最後提交領取你的三顆星魔法獎章喔！
-          </p>
         </div>
       </div>
 

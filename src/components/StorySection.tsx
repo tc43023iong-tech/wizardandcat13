@@ -173,11 +173,6 @@ export default function StorySection() {
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
             Wizard and Cat 13: Prince Eric&#39;s Birthday
           </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed font-medium">
-            點擊句子中的<span className="text-orange-500 font-extrabold">橘色標註單字</span>，可以立刻聽發音、看音標與了解其例句。
-            我們已經將故事切分成<b>「一句一行」</b>，並伴隨難字括號中文，更適合小朋友閱讀！
-            同時，故事中穿插了 <b>Q & A 挑戰</b>，回答對越多，上方的進度條就越滿哦！✨
-          </p>
         </div>
       </div>
 

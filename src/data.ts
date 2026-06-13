@@ -197,16 +197,6 @@ export const VOCABULARY_DATA: WordDetail[] = [
     zh_example: "湯姆聽到了一聲吵雜的噪聲。"
   },
   {
-    id: "116",
-    word: "see",
-    ipa: "/siː/",
-    zh: "看見 / 見面",
-    emoji: "👁️",
-    explanation: "用雙眼看清楚東西，或者和某人聚首",
-    en_example: "I can see the queen.",
-    zh_example: "我看見女王了。"
-  },
-  {
     id: "117",
     word: "hurried",
     ipa: "/ˈhʌrid/",
@@ -247,16 +237,6 @@ export const VOCABULARY_DATA: WordDetail[] = [
     zh_example: "今天也許會下雨。"
   },
   {
-    id: "121",
-    word: "make",
-    ipa: "/meɪk/",
-    zh: "使 / 讓",
-    emoji: "🪄",
-    explanation: "做某些事，導致別人產生了某種動作或者反應",
-    en_example: "You make me happy.",
-    zh_example: "你讓我感到很快樂。"
-  },
-  {
     id: "123",
     word: "throne",
     ipa: "/θroʊn/",
@@ -275,16 +255,6 @@ export const VOCABULARY_DATA: WordDetail[] = [
     explanation: "把上半身向前向下彎，用來表示對別人的禮貌 and 尊敬",
     en_example: "He bowed to the audience.",
     zh_example: "He bowed to the audience."
-  },
-  {
-    id: "125",
-    word: "nose",
-    ipa: "/noʊz/",
-    zh: "鼻子",
-    emoji: "👃",
-    explanation: "臉部中間用來聞花香、呼吸的器官",
-    en_example: "Pinch your nose to sneeze.",
-    zh_example: "捏住你的鼻子來忍耐噴嚏。"
   },
   {
     id: "126",
@@ -386,17 +356,17 @@ export const FULL_STORY_PARAGRAPHS = [
   },
   {
     id: 4,
-    en: "Just then Dirk {appeared}. \"There you are, fool!\" he {snapped} at Tom. \"The queen wants to {see} you {at once}. Come with me!\"",
+    en: "Just then Dirk {appeared}. \"There you are, fool!\" he {snapped} at Tom. \"The queen wants to see you {at once}. Come with me!\"",
     zh: "就在這時，德克突然出現了。「你這傻瓜，原來你在這！」他嚴厲地對湯姆說。「女王要立刻見你。跟我來！」"
   },
   {
     id: 5,
-    en: "Tom {hurried} after Dirk to the {Throne Room}. Cat {was still} in his {pocket}. \"Uh-oh,\" Tom {thought}. \"Cat {might} {make} the queen {sneeze}.\"",
+    en: "Tom {hurried} after Dirk to the {Throne Room}. Cat {was still} in his {pocket}. \"Uh-oh,\" Tom {thought}. \"Cat {might} make the queen {sneeze}.\"",
     zh: "湯姆急忙跟著德克前去覲見大廳。貓咪還在他的口袋裡。「噢不，」湯姆心心想，「貓咪可能會讓女王打噴嚏。」"
   },
   {
     id: 6,
-    en: "The queen sat on her {throne}. Tom {bowed}. \"Good morning, Your {Majesty}.\" The queen's {nose} {wriggled}. She {pulled out} her {handkerchief}.",
+    en: "The queen sat on her {throne}. Tom {bowed}. \"Good morning, Your {Majesty}.\" The queen's nose {wriggled}. She {pulled out} her {handkerchief}.",
     zh: "女王坐在自己的王座上。湯姆彎腰敬禮。「早安，女王陛下。」女王的鼻子動了動。她拿出了手帕。"
   },
   {
@@ -406,7 +376,7 @@ export const FULL_STORY_PARAGRAPHS = [
   },
   {
     id: 8,
-    en: "The queen {blew} her {nose}. \"Prince Eric's birthday is {tomorrow},\" she said. \"And I {need} a {special} gift for him.\"",
+    en: "The queen {blew} her nose. \"Prince Eric's birthday is {tomorrow},\" she said. \"And I {need} a {special} gift for him.\"",
     zh: "女王擦了擦鼻子。「明天是艾瑞克王子的生日，」她說，「而且我需要為他準備一份特別的禮物。」"
   },
   {
@@ -547,7 +517,7 @@ export const LADDER_QUESTIONS_BANK: LadderQuestion[] = [
   },
   {
     zh_question: "五彩裝飾彩帶 🎗️",
-    options: ["Streamers", "Gift", "Servants", "Claws"],
+    options: ["Streamers", "Majesty", "Servants", "Claws"],
     answer: "Streamers",
     emoji: "🎗️"
   },
@@ -559,7 +529,7 @@ export const LADDER_QUESTIONS_BANK: LadderQuestion[] = [
   },
   {
     zh_question: "天花板 🏠",
-    options: ["Ceiling", "Pocket", "Throne Room", "Gift"],
+    options: ["Ceiling", "Pocket", "Throne Room", "Servants"],
     answer: "Ceiling",
     emoji: "🏠"
   },
@@ -577,7 +547,7 @@ export const LADDER_QUESTIONS_BANK: LadderQuestion[] = [
   },
   {
     zh_question: "衣服的口袋 🧥",
-    options: ["Streamers", "Gift", "Pocket", "Handkerchief"],
+    options: ["Streamers", "Throne Room", "Pocket", "Handkerchief"],
     answer: "Pocket",
     emoji: "🧥"
   },
@@ -594,10 +564,10 @@ export const LADDER_QUESTIONS_BANK: LadderQuestion[] = [
     emoji: "🤧"
   },
   {
-    zh_question: "生日禮物 🎁",
-    options: ["Royal Ballroom", "Streamers", "Gift", "Claws"],
-    answer: "Gift",
-    emoji: "🎁"
+    zh_question: "發生了什麼事？ / 怎麼了？ ❓",
+    options: ["What's going on?", "I need your help.", "Come with me!", "Good morning."],
+    answer: "What's going on?",
+    emoji: "❓"
   }
 ];
 

@@ -296,13 +296,6 @@ export default function WordReview() {
           <span className="px-3 py-1 text-xs font-bold bg-amber-100 text-amber-900 rounded-full">
             單字學習 & 趣味對決 Deck & Match
           </span>
-          <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
-            重要課後單詞複習 & 雙人消消樂機台
-          </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed">
-            在這裡，我們精心準備了故事核心的英文單詞與超級有趣的繪本排序挑戰！
-            請先和同桌同學一起完成「故事圖片排序大關卡」，接著熟悉「單詞預習」與進入對戰淘汰賽！
-          </p>
         </div>
       </div>
 

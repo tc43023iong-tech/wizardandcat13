@@ -75,10 +75,6 @@ export default function UsefulSentences() {
           <h2 className="text-2xl font-black text-[#5c3e16] mt-2">
             Useful Sentences 生活魔法句
           </h2>
-          <p className="text-[#4a453e] text-sm mt-1 leading-relaxed font-semibold">
-            故事裡有很多非常實用的句子，不僅湯姆和女王會用到，你在學校、在家裡也天天都可以對朋友說喔！
-            點擊卡片聽音檔和日常生活例子，然後完成好玩的 <b>6 題繪本情境測驗</b>，看著可愛的小動物插畫選正確的魔法咒語吧！
-          </p>
         </div>
       </div>
 
