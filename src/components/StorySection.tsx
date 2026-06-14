@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Languages, HelpCircle, Check, X, Sparkles, Smile, Trophy } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { WordDetail } from '../types';
 import { VOCABULARY_DATA, FULL_STORY_PARAGRAPHS, LITTLE_FOX_QUESTIONS } from '../data';
 import { playTTS, playCorrectSound, playIncorrectSound, playLevelUpSound } from './AudioEngine';
@@ -141,9 +142,35 @@ export default function StorySection() {
 
   // Handle choice submission in Q&A
   const handleSelectOption = (qIdx: number, val: string, correct: string) => {
+    const wasAlreadyCorrect = answers[qIdx] === correct;
     setAnswers(prev => ({ ...prev, [qIdx]: val }));
+    
     if (val === correct) {
       playCorrectSound();
+      
+      if (!wasAlreadyCorrect) {
+        // Trigger high-fidelity confetti for 1.5 seconds
+        const duration = 1500;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 28, spread: 360, ticks: 60, zIndex: 1000 };
+
+        const randomInRange = (min: number, max: number) => {
+          return Math.random() * (max - min) + min;
+        };
+
+        const interval = window.setInterval(() => {
+          const timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          const particleCount = 40 * (timeLeft / duration);
+          confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+          confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        }, 200);
+      }
+      
       // If completed all 5 questions, play spectacular level-up cheer
       const updated = { ...answers, [qIdx]: val };
       if (Object.keys(updated).length === LITTLE_FOX_QUESTIONS.length) {
@@ -165,7 +192,7 @@ export default function StorySection() {
   const progressPercent = (answeredCount / totalQuestions) * 100;
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-8">
       {/* Main Story Book Card */}
       <div className="bg-white rounded-3xl border-4 border-amber-200 shadow-xl overflow-hidden animate-fade-in">
         {/* Story Board Title */}

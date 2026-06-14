@@ -304,10 +304,13 @@ export default function WordReview() {
         <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0 shadow-sm animate-pulse">
           💡
         </div>
-        <div>
-          <span className="px-3 py-1 text-xs font-bold bg-amber-100 text-amber-900 rounded-full">
+        <div className="space-y-1.5">
+          <h2 className="text-xl md:text-2xl font-black text-[#5c3e16] tracking-wide">
             單字學習 & 趣味對決 Deck & Match
-          </span>
+          </h2>
+          <p className="text-[#8c7456] text-xs md:text-sm font-semibold">
+            透過卡牌配對、故事排序挑戰，加深單字與情節的學習記憶吧！ 🌟
+          </p>
         </div>
       </div>
 
