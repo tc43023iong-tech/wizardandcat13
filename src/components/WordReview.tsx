@@ -23,6 +23,32 @@ const FILTERED_VOCABULARY_DATA = VOCABULARY_DATA.filter(
 );
 import WordPopup from './WordPopup';
 
+function highlightBilingual(text: string): React.ReactNode {
+  if (!text) return "";
+  const regex = /\b((?:[A-Z][a-zA-Z'\-]*\s+)?[A-Z][a-zA-Z'\-]*|[a-zA-Z'\-]+)\s*(\([\u4e00-\u9fa50-9a-zA-Z\s,，.。!！?？、/\\：:——]+?\))/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    if (matchIndex > lastIndex) {
+      elements.push(text.substring(lastIndex, matchIndex));
+    }
+    const englishPart = match[1];
+    const chinesePart = match[2];
+    elements.push(
+      <span key={matchIndex} className="bg-yellow-250 text-slate-950 font-extrabold px-1.5 py-0.5 rounded border-b-2 border-yellow-400 shadow-3xs inline-block mx-0.5">
+        {englishPart} {chinesePart}
+      </span>
+    );
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    elements.push(text.substring(lastIndex));
+  }
+  return <>{elements}</>;
+}
+
 interface CardItem {
   id: string; // "word_id-en" or "word_id-zh"
   wordId: string;
@@ -36,28 +62,28 @@ const SEQUENCING_CARDS = [
     id: "seq_ballroom",
     order: 1,
     image: "/assets/images/seq_ballroom_detail_1781361127402.jpg",
-    narrative: "Tom looked inside the Royal Ballroom. Servants were putting flowers on the tables.",
+    narrative: "Tom looked inside the Royal Ballroom (皇家宴會廳). Servants (僕人) were putting flowers on the tables.",
     hint: "派對佈置：僕人在皇家宴會廳裡擺放漂亮的鮮花與裝飾彩帶。"
   },
   {
     id: "seq_dirk",
     order: 2,
     image: "/assets/images/seq_dirk_detail_1781361142112.jpg",
-    narrative: "Dirk snapped: 'The queen wants to see you at once. Come with me!'",
+    narrative: "Dirk snapped (厲聲說道): 'The queen wants to see you at once. Come with me!'",
     hint: "傳達命令：脾氣不好的德克突然冒出來，命令湯姆去見女王陛下。"
   },
   {
     id: "seq_queen",
     order: 3,
     image: "/assets/images/seq_queen_detail_1781360909538.jpg",
-    narrative: "The queen sneezed 'Ah-choo!' and told Tom about a special gift.",
+    narrative: "The queen sneezed (打噴嚏) 'Ah-choo!' and told Tom about a special gift.",
     hint: "女王哈啾：女王感冒打了好大的噴嚏，告訴湯姆她需要生日禮物幫忙。"
   },
   {
     id: "seq_pocket",
     order: 4,
     image: "/assets/images/seq_pocket_detail_1781360891214.jpg",
-    narrative: "Cat hissed and scratched with sharp claws inside Tom's pocket.",
+    narrative: "Cat hissed (發出嘶嘶聲) and scratched (抓撓) with sharp (鋒利的) claws (爪子) inside Tom's pocket.",
     hint: "貓咪吃醋：聽到王子想要買狗當寵物，口袋底下的貓咪生氣極了！"
   }
 ];
@@ -305,10 +331,10 @@ export default function WordReview() {
           💡
         </div>
         <div className="space-y-1.5">
-          <h2 className="text-xl md:text-2xl font-black text-[#5c3e16] tracking-wide">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-[#5c3e16] tracking-wide">
             單字學習 & 趣味對決 Deck & Match
           </h2>
-          <p className="text-[#8c7456] text-xs md:text-sm font-semibold">
+          <p className="text-[#8c7456] text-xs md:text-base font-semibold">
             透過卡牌配對、故事排序挑戰，加深單字與情節的學習記憶吧！ 🌟
           </p>
         </div>
@@ -365,7 +391,7 @@ export default function WordReview() {
                 {/* Column 2: Text (列二：文字) */}
                 <div className="col-span-12 md:col-span-5 lg:col-span-5 w-full">
                   <p className="text-sm font-bold text-slate-800 leading-relaxed bg-white p-4 rounded-2xl border border-dashed border-slate-200 shadow-2xs">
-                    {card.narrative}
+                    {highlightBilingual(card.narrative)}
                   </p>
                 </div>
 

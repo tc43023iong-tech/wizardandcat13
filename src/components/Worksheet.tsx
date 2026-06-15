@@ -9,6 +9,32 @@ import { ClipboardCheck, RefreshCw, Star, Trophy } from 'lucide-react';
 import { WORKSHEET_DATA } from '../data';
 import { playCorrectSound, playIncorrectSound, playLevelUpSound } from './AudioEngine';
 
+function highlightBilingual(text: string): React.ReactNode {
+  if (!text) return "";
+  const regex = /\b((?:[A-Z][a-zA-Z'\-]*\s+)?[A-Z][a-zA-Z'\-]*|[a-zA-Z'\-]+)\s*(\([\u4e00-\u9fa50-9a-zA-Z\s,，.。!！?？、/\\：:——]+?\))/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    if (matchIndex > lastIndex) {
+      elements.push(text.substring(lastIndex, matchIndex));
+    }
+    const englishPart = match[1];
+    const chinesePart = match[2];
+    elements.push(
+      <span key={matchIndex} className="bg-yellow-200 text-slate-950 font-extrabold px-1.5 py-0.5 rounded border-b-2 border-yellow-400 shadow-3xs inline-block mx-0.5">
+        {englishPart} {chinesePart}
+      </span>
+    );
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    elements.push(text.substring(lastIndex));
+  }
+  return <>{elements}</>;
+}
+
 export default function Worksheet() {
   const [mcAnswers, setMcAnswers] = useState<Record<number, string>>({});
   const [tfAnswers, setTfAnswers] = useState<Record<number, string>>({});
@@ -167,7 +193,7 @@ export default function Worksheet() {
                     <span className="px-2 py-0.5 bg-slate-100 text-slate-500 font-bold font-mono text-xs rounded-md mt-1">Q{q.id}</span>
                     <div>
                       <h5 className="font-extrabold text-base text-[#2b2723] leading-snug">
-                        {q.question} {q.emoji}
+                        {highlightBilingual(q.question)} {q.emoji}
                       </h5>
                     </div>
                   </div>
@@ -196,7 +222,7 @@ export default function Worksheet() {
                           onClick={() => handleMcSelect(q.id, opt)}
                           className={`p-3.5 rounded-xl border-2 text-left font-bold text-sm transition-all ${itemStyle} ${!currentChoice ? 'cursor-pointer' : ''}`}
                         >
-                          {opt}
+                          {highlightBilingual(opt)}
                         </button>
                       );
                     })}
@@ -223,7 +249,7 @@ export default function Worksheet() {
                       <span className="px-2 py-0.5 bg-slate-100 text-slate-500 font-bold font-mono text-xs rounded-md mt-1">TF{q.id}</span>
                       <div>
                         <h5 className="font-extrabold text-base text-[#2b2723] leading-snug">
-                          {q.question} {q.emoji}
+                          {highlightBilingual(q.question)} {q.emoji}
                         </h5>
                       </div>
                     </div>
@@ -252,7 +278,7 @@ export default function Worksheet() {
                             onClick={() => handleTfSelect(q.id, choice)}
                             className={`flex-1 py-3 font-extrabold rounded-xl border-2 text-sm transition-all ${btnStyle} ${!currentChoice ? 'cursor-pointer active:scale-95' : ''}`}
                           >
-                            {choice === 'True' ? '👍 True (正確)' : '👎 False (錯誤)'}
+                            {choice === 'True' ? '👍 True' : '👎 False'}
                           </button>
                         );
                       })}
@@ -275,7 +301,7 @@ export default function Worksheet() {
                 <span className="px-2 py-0.5 bg-slate-100 text-slate-500 font-bold font-mono text-xs rounded-md mt-1">QA3</span>
                 <div>
                   <h5 className="font-extrabold text-base text-[#2b2723] leading-snug">
-                    {WORKSHEET_DATA.shortAnswer.question} {WORKSHEET_DATA.shortAnswer.emoji}
+                    {highlightBilingual(WORKSHEET_DATA.shortAnswer.question)} {WORKSHEET_DATA.shortAnswer.emoji}
                   </h5>
                 </div>
               </div>
@@ -304,7 +330,7 @@ export default function Worksheet() {
                       onClick={() => handleShortSelect(choice)}
                       className={`flex-1 py-3 font-extrabold rounded-xl border-2 text-sm transition-all ${btnStyle} ${shortAnswer === null ? 'cursor-pointer active:scale-95' : ''}`}
                     >
-                      {choice}
+                      {highlightBilingual(choice)}
                     </button>
                   );
                 })}

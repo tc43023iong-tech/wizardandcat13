@@ -17,6 +17,32 @@ function splitQuestionIntoLines(text: string): string[] {
   return formatted.split("\n").map(s => s.trim()).filter(Boolean);
 }
 
+function highlightBilingual(text: string): React.ReactNode {
+  if (!text) return "";
+  const regex = /\b((?:[A-Z][a-zA-Z'\-]*\s+)?[A-Z][a-zA-Z'\-]*|[a-zA-Z'\-]+)\s*(\([\u4e00-\u9fa50-9a-zA-Z\s,，.。!！?？、/\\：:——]+?\))/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    if (matchIndex > lastIndex) {
+      elements.push(text.substring(lastIndex, matchIndex));
+    }
+    const englishPart = match[1];
+    const chinesePart = match[2];
+    elements.push(
+      <span key={matchIndex} className="bg-yellow-200 text-slate-950 font-extrabold px-1.5 py-0.5 rounded border-b-2 border-yellow-400 shadow-3xs inline-block mx-0.5">
+        {englishPart} {chinesePart}
+      </span>
+    );
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    elements.push(text.substring(lastIndex));
+  }
+  return <>{elements}</>;
+}
+
 export default function UsefulSentences() {
   const [activeSentenceId, setActiveSentenceId] = useState<number | null>(null);
   
@@ -152,7 +178,7 @@ export default function UsefulSentences() {
                     {item.examples.map((ex, exIdx) => {
                       return (
                         <div key={exIdx} className="bg-slate-50 p-2.5 rounded-xl text-[#4a453e] font-semibold leading-relaxed border border-slate-200">
-                          💡 {ex}
+                          💡 {highlightBilingual(ex)}
                         </div>
                       );
                     })}
@@ -205,7 +231,7 @@ export default function UsefulSentences() {
                 <span className="text-amber-700 font-extrabold block text-xs uppercase tracking-wider mb-1">Question {quizIndex + 1}:</span>
                 {splitQuestionIntoLines(currentQuiz.question).map((line, idx) => (
                   <p key={idx} className="text-[#2b2723] font-black">
-                    {line}
+                    {highlightBilingual(line)}
                   </p>
                 ))}
               </div>

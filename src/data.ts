@@ -462,7 +462,7 @@ export const USEFUL_SENTENCES = [
     context: "Ask this when you see something happening (事情發生) and feel curious (好奇的).",
     examples: [
       "If you see a lot of friends whispering (低語) and laughing together: \"What's going on?\"",
-      "If you walk home (走回家) and find your room is completely messy (零亂的): \"What's going on?\""
+      "If you walk home and find your room is completely (完全地) messy (零亂的): \"What's going on?\""
     ]
   },
   {
@@ -473,7 +473,7 @@ export const USEFUL_SENTENCES = [
     context: "Say this when you want someone to follow (跟隨) you.",
     examples: [
       "If you want your friends to go play on the school playground (遊戲場): \"Come with me!\"",
-      "If you find (找到) a beautiful butterfly (蝴蝶) and want to show your sister: \"Come with me!\""
+      "If you find a beautiful butterfly (蝴蝶) and want to show your sister: \"Come with me!\""
     ]
   },
   {
@@ -483,8 +483,8 @@ export const USEFUL_SENTENCES = [
     image: "/assets/images/quiz_img_2_1781343680990.jpg",
     context: "Say this when you cannot do something alone (獨自) and want some assistance (協助).",
     examples: [
-      "If you meet a very difficult (困難的) homework question in class: \"I need your help.\"",
-      "If you are too small or weak to open (打開) a tight (緊的) water bottle: \"I need your help.\""
+      "If you meet (遇到) a very difficult (困難的) homework question in class: \"I need your help.\"",
+      "If you are too small or weak (虛弱的/無力的) to open (打開) a tight (緊的) water bottle: \"I need your help.\""
     ]
   }
 ];
@@ -515,13 +515,13 @@ export const USEFUL_SENTENCES_QUIZ: QuizQuestion[] = [
     image: "/assets/images/quiz_img_4_1781343708494.jpg"
   },
   {
-    question: "You walk into the classroom and see colorful balloons (氣球), streamers (彩帶), and a big birthday cake on the desk, but nobody is there (沒有人在此). You ask:",
+    question: "You walk into the classroom and see colorful balloons (氣球), streamers (彩帶), and a big birthday cake on the desk, but nobody is there. You ask:",
     options: ["I need your help.", "What's going on?", "Come with me!"],
     answer: "What's going on?",
     image: "/assets/images/quiz_img_5_1781343720626.jpg"
   },
   {
-    question: "You have a super cool (超酷的) new red toy car and you want your classmate to come and play (一起玩) with you. You tell them:",
+    question: "You have a super cool (超酷的) new red toy car and you want your classmate to come and play with you. You tell them:",
     options: ["What's going on?", "I need your help.", "Come with me!"],
     answer: "Come with me!",
     image: "/assets/images/quiz_img_6_1781343734928.jpg"
@@ -632,8 +632,8 @@ export const WORKSHEET_DATA = {
   ],
   shortAnswer: {
     question: "What does the Queen want to give Prince Eric as a birthday gift (生日禮物)?",
-    options: ["A cat (一隻貓)", "A dog (一隻狗)"],
-    answer: "A dog (一隻狗)",
+    options: ["A cat", "A dog"],
+    answer: "A dog",
     emoji: "🎁🐕"
   }
 };
